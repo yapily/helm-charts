@@ -1,0 +1,16 @@
+apiVersion: v2
+name: job
+description: A Helm chart for Kubernetes job
+type: application
+version: 0.2.1
+
+keywords:
+  - cronjob
+
+maintainers:
+  - name: juri
+    url: https://github.com/juriku/helm-charts
+
+dependencies:
+  - name: base
+    repository: file://../base
