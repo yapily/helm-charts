@@ -197,6 +197,16 @@ securityContext:
 {{- end }}
 
 {{/*
+define pod security
+*/}}
+{{- define "base.podVolumeMounts" -}}
+{{- with .volumeMounts }}
+volumeMounts:
+{{ toYaml . | indent 2 }}
+{{- end }}
+{{- end }}
+
+{{/*
 define pod command and args
 */}}
 {{- define "base.podCommand" -}}
@@ -220,4 +230,5 @@ define default pod properties
 {{- include "base.podProbes" . }}
 {{- include "base.podLifecycle" . }}
 {{- include "base.podResources" . }}
+{{- include "base.podVolumeMounts" . }}
 {{- end }}

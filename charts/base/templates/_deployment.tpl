@@ -58,6 +58,22 @@ spec:
       securityContext:
 {{ toYaml . | indent 8 }}
       {{- end }}
+      {{- if $deploymentValues.Values.initContainers }}
+      initContainers:
+        {{- range $containerName, $containerValues := $deploymentValues.Values.initContainers }}
+        - name: {{ $containerName }}
+          {{- include "base.image" (merge dict $containerValues.image $deploymentValues.Values.image) | nindent 10 }}
+          {{- range $key, $value := $containerValues.containerPorts }}
+          ports:
+            - name: {{ $key | quote }}
+              containerPort: {{ $value }}
+              protocol: TCP
+          {{- end }}
+          {{- with include "base.podDefaultProperties" $containerValues }}
+          {{- . | trim | nindent 10 }}
+          {{- end }}
+        {{- end }}
+      {{- end }}
       containers:
         {{- range $containerName, $containerValues := $deploymentValues.Values.extraContainers }}
         - name: {{ $containerName }}
@@ -70,10 +86,6 @@ spec:
           {{- end }}
           {{- with include "base.podDefaultProperties" $containerValues }}
           {{- . | trim | nindent 10 }}
-          {{- end }}
-          {{- with $containerValues.volumeMounts }}
-          volumeMounts:
-{{ toYaml . | indent 12 }}
           {{- end }}
         {{- end }}
         - name: {{ include "base.name" $deploymentValues }}
@@ -95,10 +107,6 @@ spec:
           {{- end }}
           {{- with include "base.podDefaultProperties" $deploymentValues.Values }}
           {{- . | trim | nindent 10 }}
-          {{- end }}
-          {{- with $deploymentValues.Values.volumeMounts }}
-          volumeMounts:
-{{ toYaml . | indent 12 }}
           {{- end }}
       {{- with include "base.NodeScheduling" $deploymentValues }}
       {{- . | trim | nindent 6 }}

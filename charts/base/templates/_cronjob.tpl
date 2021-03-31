@@ -53,19 +53,11 @@ spec:
               {{- with include "base.podDefaultProperties" $containerValues }}
               {{- . | trim | nindent 14 }}
               {{- end }}
-              {{- with $containerValues.volumeMounts }}
-              volumeMounts:
-{{ toYaml . | indent 16 }}
-              {{- end }}
             {{- end }}
             - name: {{ include "base.name" $deploymentValues }}
               {{- include "base.image" $deploymentValues.Values.image | nindent 14 }}
               {{- with include "base.podDefaultProperties" $deploymentValues.Values }}
               {{- . | trim | nindent 14 }}
-              {{- end }}
-              {{- with $deploymentValues.Values.volumeMounts }}
-              volumeMounts:
-{{ toYaml . | indent 16 }}
               {{- end }}
           {{- with include "base.NodeScheduling" $deploymentValues }}
           {{- . | trim | nindent 10 }}
