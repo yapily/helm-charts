@@ -77,6 +77,23 @@ entries:
     version: 0.2.0
   cronjob:
   - apiVersion: v2
+    created: "2021-03-31T16:24:04.360482418Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes cronjob
+    digest: 02f162fd2fd825f2ff25bc834d8d5328f4bcc96aa37c92ce710b21c7eefd831e
+    keywords:
+    - cronjob
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: cronjob
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/cronjob-0.2.3/cronjob-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
     created: "2021-03-30T09:14:50.19834803Z"
     dependencies:
     - name: base
@@ -135,6 +152,23 @@ entries:
     version: 0.2.1
   job:
   - apiVersion: v2
+    created: "2021-03-31T16:24:04.901043213Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes job
+    digest: 729091d5fc9f08dc5346fc73fe14e508feb22c582e19d5387f09921341a6ba2a
+    keywords:
+    - cronjob
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: job
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/job-0.2.3/job-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
     created: "2021-03-30T09:14:50.623889297Z"
     dependencies:
     - name: base
@@ -169,4 +203,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-03-31T16:22:49.012943853Z"
+generated: "2021-03-31T16:24:04.901064415Z"
