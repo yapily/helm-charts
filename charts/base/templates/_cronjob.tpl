@@ -46,6 +46,16 @@ spec:
           {{- if $deploymentValues.Values.activeDeadlineSeconds }}
           activeDeadlineSeconds: {{ $deploymentValues.Values.activeDeadlineSeconds }}
           {{- end }}
+          {{- if $deploymentValues.Values.initContainers }}
+          initContainers:
+            {{- range $containerName, $containerValues := $deploymentValues.Values.initContainers }}
+            - name: {{ $containerName }}
+              {{- include "base.image" (merge dict $containerValues.image $deploymentValues.Values.image) | nindent 10 }}
+              {{- with include "base.podDefaultProperties" $containerValues }}
+              {{- . | trim | nindent 14 }}
+              {{- end }}
+            {{- end }}
+          {{- end }}
           containers:
             {{- range $containerName, $containerValues := $deploymentValues.Values.extraContainers }}
             - name: {{ $containerName }}
