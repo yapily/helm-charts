@@ -216,7 +216,6 @@ lifecycle: {}
 #     command:
 #       - command
 #     volumeMounts:
-#     ## can define volumes at this point or at .Values.volumes
 
 ## simple way to add variables
 # environment:
