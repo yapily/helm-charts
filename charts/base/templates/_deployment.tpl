@@ -50,13 +50,8 @@ spec:
       labels:
         {{- include "base.selectorLabels" $deploymentValues | nindent 8 }}
     spec:
-      {{- if $deploymentValues.Values.imagePullSecrets }}
-      imagePullSecrets:
-        - name: {{ $deploymentValues.Values.imagePullSecrets }}
-      {{- end }}
-      {{- with $deploymentValues.Values.podSecurityContext }}
-      securityContext:
-{{ toYaml . | indent 8 }}
+      {{- with include "base.containerDefaultProperties" $deploymentValues }}
+      {{- . | trim | nindent 6 }}
       {{- end }}
       {{- if $deploymentValues.Values.initContainers }}
       initContainers:
@@ -108,9 +103,6 @@ spec:
           {{- with include "base.podDefaultProperties" $deploymentValues.Values }}
           {{- . | trim | nindent 10 }}
           {{- end }}
-      {{- with include "base.NodeScheduling" $deploymentValues }}
-      {{- . | trim | nindent 6 }}
-      {{- end }}
       {{- if $deploymentValues.Values.terminationGracePeriodSeconds }}
       terminationGracePeriodSeconds: {{ $deploymentValues.Values.terminationGracePeriodSeconds }}
       {{- end }}

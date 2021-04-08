@@ -45,8 +45,8 @@ pod affinity
 */}}
 {{- define "base.affinity" -}}
 {{- $podAntiAffinity := .Values.podAntiAffinity | default dict -}}
-{{- if or .Values.affinity $podAntiAffinity.enabled }}
 {{- $deploymentValues := . -}}
+{{- if or .Values.affinity $podAntiAffinity.enabled }}
 affinity:
 {{- with .Values.affinity }}
 {{ toYaml . | indent 2 }}
@@ -197,6 +197,26 @@ securityContext:
 {{- end }}
 
 {{/*
+define container security
+*/}}
+{{- define "base.containerSecurity" -}}
+{{- with .podSecurityContext }}
+securityContext:
+{{ toYaml . | indent 2 }}
+{{- end }}
+{{- end }}
+
+{{/*
+define container security
+*/}}
+{{- define "base.imagePullSecrets" -}}
+{{- if .imagePullSecrets }}
+imagePullSecrets:
+  - name: {{ .imagePullSecrets }}
+{{- end }}
+{{- end }}
+
+{{/*
 define pod security
 */}}
 {{- define "base.podVolumeMounts" -}}
@@ -243,5 +263,14 @@ define default pod properties
 {{- include "base.podLifecycle" . }}
 {{- include "base.podResources" . }}
 {{- include "base.podVolumeMounts" . }}
-{{- include "base.serviceAccount" . }}
+{{- end }}
+
+{{/*
+define default container properties
+*/}}
+{{- define "base.containerDefaultProperties" -}}
+{{- include "base.imagePullSecrets" .Values }}
+{{- include "base.containerSecurity" .Values }}
+{{- include "base.NodeScheduling" . }}
+{{- include "base.serviceAccount" .Values }}
 {{- end }}

@@ -1,0 +1,6 @@
+dependencies:
+- name: base
+  repository: file://../base
+  version: 0.2.3
+digest: sha256:21a1560841faa34f4c5efdaa985fe8002ba87b8de71b49d5d835b5875da848de
+generated: "2021-04-08T18:02:46.02188+01:00"

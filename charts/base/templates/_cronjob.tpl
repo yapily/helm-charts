@@ -35,13 +35,8 @@ spec:
       {{- end }}
       template:
         spec:
-          {{- if $deploymentValues.Values.imagePullSecrets }}
-          imagePullSecrets:
-            - name: {{ $deploymentValues.Values.imagePullSecrets }}
-          {{- end }}
-          {{- with $deploymentValues.Values.podSecurityContext }}
-          securityContext:
-{{ toYaml . | indent 12 }}
+          {{- with include "base.containerDefaultProperties" $deploymentValues }}
+          {{- . | trim | nindent 10 }}
           {{- end }}
           {{- if $deploymentValues.Values.activeDeadlineSeconds }}
           activeDeadlineSeconds: {{ $deploymentValues.Values.activeDeadlineSeconds }}
@@ -69,9 +64,6 @@ spec:
               {{- with include "base.podDefaultProperties" $deploymentValues.Values }}
               {{- . | trim | nindent 14 }}
               {{- end }}
-          {{- with include "base.NodeScheduling" $deploymentValues }}
-          {{- . | trim | nindent 10 }}
-          {{- end }}
           {{- with include "base.volumes" $deploymentValues }}
           {{- . | trim | nindent 10 }}
           {{- end }}
