@@ -224,10 +224,10 @@ args:
 define pod service account
 */}}
 {{- define "base.serviceAccount" -}}
-{{- if $deploymentValues.Values.serviceAccountName }}
-serviceAccountName: {{ $deploymentValues.Values.serviceAccountName }}
+{{- if .serviceAccountName }}
+serviceAccountName: {{ .serviceAccountName }}
 {{- end }}
-{{- with $deploymentValues.Values.automountServiceAccountToken }}
+{{- with .automountServiceAccountToken }}
 automountServiceAccountToken: {{ .enabled }}
 {{- end }}
 {{- end }}
