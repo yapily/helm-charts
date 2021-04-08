@@ -221,6 +221,18 @@ args:
 {{- end }}
 
 {{/*
+define pod service account
+*/}}
+{{- define "base.serviceAccount" -}}
+{{- if $deploymentValues.Values.serviceAccountName }}
+serviceAccountName: {{ $deploymentValues.Values.serviceAccountName }}
+{{- end }}
+{{- with $deploymentValues.Values.automountServiceAccountToken }}
+automountServiceAccountToken: {{ .enabled }}
+{{- end }}
+{{- end }}
+
+{{/*
 define default pod properties
 */}}
 {{- define "base.podDefaultProperties" -}}
@@ -231,4 +243,5 @@ define default pod properties
 {{- include "base.podLifecycle" . }}
 {{- include "base.podResources" . }}
 {{- include "base.podVolumeMounts" . }}
+{{- include "base.serviceAccount" . }}
 {{- end }}

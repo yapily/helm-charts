@@ -130,6 +130,15 @@ resources: {}
 #   timeoutSeconds: 5
 #   failureThreshold: 3
 
+## specify service account
+# serviceAccountName: sa-name
+
+## https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server
+# automountServiceAccountToken:
+#   enabled: false
+## will result in:
+## automountServiceAccountToken: false
+
 ## quick extra annotations for prometheus scrape config
 ## example: https://stackoverflow.com/questions/53365191/monitor-custom-kubernetes-pod-metrics-using-prometheus
 ## enable prometheus.io/scrape (boolean)
