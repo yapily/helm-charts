@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-04-08T16:40:42.594221077Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: 44a142a239c298666a8822a80f5c65bc44ae659cbbce2192028d6d552fcc493c
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.3.9/app-0.3.9.tgz
+    version: 0.3.9
+  - apiVersion: v2
     created: "2021-03-31T16:22:49.012934952Z"
     dependencies:
     - name: base
@@ -52,6 +77,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
+  - apiVersion: v2
+    created: "2021-04-08T16:40:42.722167894Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 59ca07d354ac7c94ee14d9f4c1e11f767caa1e0a2a1194415a4302876bd4a201
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.2.1/base-0.2.1.tgz
+    version: 0.2.1
   - apiVersion: v2
     created: "2021-03-30T09:14:50.032127016Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -203,4 +251,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-03-31T16:24:04.901064415Z"
+generated: "2021-04-08T16:40:42.722187395Z"
