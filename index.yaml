@@ -295,6 +295,23 @@ entries:
     version: 0.3.1
   ingress:
   - apiVersion: v2
+    created: "2021-04-09T13:19:52.88223643Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes ingress
+    digest: 013b126b338c40b165e6cfe346c453c61845ee664ba56c763ed6e57063ab2b1d
+    keywords:
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: ingress
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/ingress-0.2.3/ingress-0.2.3.tgz
+    version: 0.2.3
+  - apiVersion: v2
     created: "2021-03-30T09:14:50.489637509Z"
     dependencies:
     - name: base
@@ -381,4 +398,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-04-08T17:26:13.219854102Z"
+generated: "2021-04-09T13:19:52.882357235Z"
