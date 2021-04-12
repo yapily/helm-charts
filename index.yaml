@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-04-12T15:38:24.364682022Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: ac21c07f01b7de33af36387260c60aaca3761a6e85e0530236747b7d18fa1bfb
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.3.15/app-0.3.15.tgz
+    version: 0.3.15
+  - apiVersion: v2
     created: "2021-04-09T14:11:07.146262919Z"
     dependencies:
     - name: base
@@ -152,6 +177,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
+  - apiVersion: v2
+    created: "2021-04-12T15:38:24.495364788Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 2fc75bf7a9f51f4851a92c6cf286aa6cfbdf1bd744ea8909b1f1410a8eda2008
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.2.5/base-0.2.5.tgz
+    version: 0.2.5
   - apiVersion: v2
     created: "2021-04-09T14:11:07.287521539Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -343,6 +391,23 @@ entries:
     version: 0.3.1
   ingress:
   - apiVersion: v2
+    created: "2021-04-12T15:38:24.646458707Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes ingress
+    digest: 7ca775f33adc079906ac86ec410452be796ae165d392fc9e695581e0d315381a
+    keywords:
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: ingress
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/ingress-0.2.5/ingress-0.2.5.tgz
+    version: 0.2.5
+  - apiVersion: v2
     created: "2021-04-09T14:11:10.551096594Z"
     dependencies:
     - name: base
@@ -463,4 +528,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-04-09T14:11:10.551160695Z"
+generated: "2021-04-12T15:38:24.646549507Z"
