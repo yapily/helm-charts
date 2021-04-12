@@ -55,7 +55,7 @@ spec:
           {{- if .paths }}
           {{- range .paths }}
           - path: {{ .path }}
-            pathType: Prefix
+            pathType: {{ .pathType | default "Prefix" }}
             backend:
               service:
                 {{- if .serviceName }}
@@ -75,7 +75,9 @@ spec:
                   {{- end }}
                 {{- end }}
           {{- else }}
-          - backend:
+          - path: "/"
+            pathType: Prefix
+            backend:
               service:
                 {{- if .serviceName }}
                 name: {{ .serviceName | quote }}
