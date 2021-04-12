@@ -5,7 +5,7 @@
 {{- $serviceValues := .Values.service | default dict -}}
 {{- $svcName := $serviceValues.name | default $fullName -}}
 ---
-{{- if semverCompare ">=1.22-0" .Capabilities.KubeVersion.GitVersion -}}
+{{- if semverCompare ">=1.19-0" .Capabilities.KubeVersion.GitVersion -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -37,6 +37,16 @@ spec:
       {{- end }}
     {{- end }}
   {{- else }}
+    - hosts:
+        {{- range .Values.ingress.hosts }}
+        - {{ .host | quote }}
+        {{- end }}
+      {{- if .Values.tls }}
+      {{- if .Values.tls.default }}
+      secretName: {{ .Values.tls.default }}
+      {{- end }}
+      {{- end }}
+  {{- end }}
   rules:
     {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
@@ -55,9 +65,13 @@ spec:
                 {{- end }}
                 port:
                   {{- if .servicePort }}
+                  {{- if regexMatch "[0-9]" ( .servicePort | toString ) }}
                   number: {{ .servicePort }}
                   {{- else }}
-                  number: {{ $svcPort }}
+                  name: {{ .servicePort }}
+                  {{- end }}
+                  {{- else }}
+                  name: {{ $svcPort }}
                   {{- end }}
                 {{- end }}
           {{- else }}
@@ -70,11 +84,14 @@ spec:
                 {{- end }}
                 port:
                   {{- if .servicePort }}
+                  {{- if regexMatch "[0-9]" ( .servicePort | toString ) }}
                   number: {{ .servicePort }}
                   {{- else }}
-                  number: {{ $svcPort }}
+                  name: {{ .servicePort }}
                   {{- end }}
-          {{- end }}
+                  {{- else }}
+                  name: {{ $svcPort }}
+                  {{- end }}
           {{- end }}
     {{- end }}
 {{- else -}}
