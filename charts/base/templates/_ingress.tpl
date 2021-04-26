@@ -12,12 +12,14 @@ metadata:
   name: {{ $fullName }}
   labels:
     {{- include "base.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
   annotations:
-    kubernetes.io/ingress.class: {{ .Values.ingress.class | quote }}
-    {{- with .Values.ingress.annotations }}
     {{- toYaml . | nindent 4 }}
-    {{- end }}
+  {{- end }}
 spec:
+  {{- if .Values.ingress.class }}
+  ingressClassName: {{ .Values.ingress.class | quote }}
+  {{- end }}
   {{- if .Values.ingress.backend }}
   defaultBackend:
     service:

@@ -171,7 +171,7 @@ define pod lifecycle
 */}}
 {{- define "base.podLifecycle" -}}
 {{- with .lifecycle }}
-resources:
+lifecycle:
 {{ toYaml . | indent 2 }}
 {{- end }}
 {{- end }}
