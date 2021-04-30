@@ -1,28 +1,25 @@
 {{- define "base.argoRollouts" -}}
-{{- $root := . -}}
-{{- range $deploymentName, $deploymentValuesOverride := .Values.deployments }}
-{{- $deploymentValues := merge dict $deploymentValuesOverride $root -}}
-{{- if $deploymentValues.enabled }}
-{{- if $deploymentValues.Values.argo.rollouts.enabled }}
+{{- if .Values.argo.rollouts.enabled }}
+{{- if eq .Values.argo.rollouts.type "workloadRef" }}
 ---
-apiVersion: {{ $deploymentValues.Values.apiVersion | default "argoproj.io/v1alpha1" }}
-kind: {{ $deploymentValues.Values.kind | default "Rollout" }}
+apiVersion: {{ .Values.argo.rollouts.apiVersion }}
+kind: {{ .Values.argo.rollouts.kind }}
 metadata:
-  name: {{ include "base.fullname" $deploymentValues }}
-  {{- if $deploymentValues.Values.autoscaling.enabled }}
-  replicas: {{ $deploymentValues.Values.autoscaling.minReplicas }}
+  name: {{ include "base.fullname" . }}
+spec:
+  {{- if .Values.autoscaling.enabled }}
+  replicas: {{ .Values.autoscaling.minReplicas }}
   {{- else }}
-  replicas: {{ $deploymentValues.Values.replicaCount }}
+  replicas: {{ .Values.replicaCount }}
   {{- end }}
   workloadRef:
-    apiVersion: {{ $deploymentValues.Values.apiVersion | default "apps/v1" }}
-    kind: {{ $deploymentValues.Values.kind | default "Deployment" }}
-    name: {{ include "base.fullname" $deploymentValues }}
-  {{- with $deploymentValues.Values.argo.strategy }}
+    apiVersion: {{ .Values.apiVersion | default "apps/v1" }}
+    kind: {{ .Values.kind | default "Deployment" }}
+    name: {{ include "base.fullname" . }}
+  {{- with .Values.argo.rollouts.strategy }}
   strategy:
     {{- toYaml . | nindent 4 }}
   {{- end }}
-{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

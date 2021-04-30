@@ -327,6 +327,7 @@ ingress:
 
 ## Argo CD rollouts
 ## ref: https://argoproj.github.io/argo-rollouts/migrating/
+## ref spec: https://argoproj.github.io/argo-rollouts/features/specification/
 
 ## ref: https://argoproj.github.io/argo-rollouts/migrating/#convert-deployment-to-rollout
 ## change apiVersion and kind to Convert Deployment to Rollout
@@ -335,11 +336,17 @@ ingress:
 
 argo:
   rollouts:
+    enabled: false
+    ## ref: https://argoproj.github.io/argo-rollouts/migrating/#convert-deployment-to-rollout
+    ## changing apiVersion and kind to Convert Deployment to Rollout
+    type: Deployment
     ## https://argoproj.github.io/argo-rollouts/migrating/#reference-deployment-from-rollout
     ## Reference Deployment From Rollout (true)
-    enabled: false
-  strategy: {}
-    # canary:
-    #   steps:
-    #     - setWeight: 20
-    #     - pause: {duration: 10s}
+    ## type: workloadRef
+    apiVersion: argoproj.io/v1alpha1
+    kind: Rollout
+    strategy: {}
+      # canary:
+      #   steps:
+      #     - setWeight: 20
+      #     - pause: {duration: 10s}

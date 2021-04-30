@@ -4,8 +4,13 @@
 {{- $deploymentValues := merge dict $deploymentValuesOverride $root -}}
 {{- if $deploymentValues.enabled }}
 ---
+{{- if and $deploymentValues.Values.argo.rollouts.enabled ( eq $deploymentValues.Values.argo.rollouts.type "Deployment" ) }}
+apiVersion: {{ $deploymentValues.Values.argo.rollouts.apiVersion }}
+kind: {{ $deploymentValues.Values.argo.rollouts.kind }}
+{{- else }}
 apiVersion: {{ $deploymentValues.Values.apiVersion | default "apps/v1" }}
 kind: {{ $deploymentValues.Values.kind | default "Deployment" }}
+{{- end }}
 metadata:
   name: {{ include "base.fullname" $deploymentValues }}
   labels:
@@ -18,19 +23,23 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  {{- if $deploymentValues.Values.argo.rollouts.enabled }}
+  {{- if and $deploymentValues.Values.argo.rollouts.enabled ( eq $deploymentValues.Values.argo.rollouts.type "workloadRef" ) }}
   replicas: 0
-  {{- else if eq $deploymentValues.Values.kind "Rollout" }}
-  {{- with $deploymentValues.Values.argo.strategy }}
+  {{- else if $deploymentValues.Values.argo.rollouts.enabled }}
+  {{- with $deploymentValues.Values.argo.rollouts.strategy }}
   strategy:
     {{- toYaml . | nindent 4 }}
   {{- end }}
-  {{- if not $deploymentValues.Values.autoscaling.enabled }}
+  {{- if $deploymentValues.Values.autoscaling.enabled }}
+  replicas: {{ $deploymentValues.Values.autoscaling.minReplicas }}
+  {{- else }}
+  replicas: {{ $deploymentValues.Values.replicaCount }}
+  {{- end }}
+  {{- else if not $deploymentValues.Values.autoscaling.enabled }}
   replicas: {{ $deploymentValues.Values.replicaCount }}
   {{- with $deploymentValues.Values.strategy }}
   strategy:
     {{- toYaml . | nindent 4 }}
-  {{- end }}
   {{- end }}
   {{- end }}
   {{- if $deploymentValues.Values.minReadySeconds }}
