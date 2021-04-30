@@ -324,3 +324,22 @@ ingress:
 #         {
 #           "key": value
 #         }
+
+## Argo CD rollouts
+## ref: https://argoproj.github.io/argo-rollouts/migrating/
+
+## ref: https://argoproj.github.io/argo-rollouts/migrating/#convert-deployment-to-rollout
+## change apiVersion and kind to Convert Deployment to Rollout
+# apiVersion: argoproj.io/v1alpha1
+# kind: Rollout
+
+argo:
+  rollouts:
+    ## https://argoproj.github.io/argo-rollouts/migrating/#reference-deployment-from-rollout
+    ## Reference Deployment From Rollout (true)
+    enabled: false
+  strategy: {}
+    # canary:
+    #   steps:
+    #     - setWeight: 20
+    #     - pause: {duration: 10s}

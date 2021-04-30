@@ -5,7 +5,7 @@
 {{- if $deploymentValues.enabled }}
 ---
 apiVersion: {{ $deploymentValues.Values.apiVersion | default "apps/v1" }}
-kind: Deployment
+kind: {{ $deploymentValues.Values.kind | default "Deployment" }}
 metadata:
   name: {{ include "base.fullname" $deploymentValues }}
   labels:
@@ -18,13 +18,21 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-{{- if not $deploymentValues.Values.autoscaling.enabled }}
+  {{- if $deploymentValues.Values.argo.rollouts.enabled }}
+  replicas: 0
+  {{- else if eq $deploymentValues.Values.kind "Rollout" }}
+  {{- with $deploymentValues.Values.argo.strategy }}
+  strategy:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- if not $deploymentValues.Values.autoscaling.enabled }}
   replicas: {{ $deploymentValues.Values.replicaCount }}
   {{- with $deploymentValues.Values.strategy }}
   strategy:
     {{- toYaml . | nindent 4 }}
   {{- end }}
-{{- end }}
+  {{- end }}
+  {{- end }}
   {{- if $deploymentValues.Values.minReadySeconds }}
   minReadySeconds: {{ $deploymentValues.Values.minReadySeconds }}
   {{- end }}
