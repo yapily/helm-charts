@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-04-30T13:21:11.028219752Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: b5b6ae8671346c4e2155f2ebd6fe37a9b5075c0600186f1542d3fb69eb4f1ed9
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.4.2/app-0.4.2.tgz
+    version: 0.4.2
+  - apiVersion: v2
     created: "2021-04-30T11:37:03.360594254Z"
     dependencies:
     - name: base
@@ -227,6 +252,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
+  - apiVersion: v2
+    created: "2021-04-30T13:21:11.202561428Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 53ce2176dd0a170a74a88da744ddfd19376468fdd9a1ec3d8346b9e982ddaf11
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.4.2/base-0.4.2.tgz
+    version: 0.4.2
   - apiVersion: v2
     created: "2021-04-30T11:37:03.639474956Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -736,4 +784,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-04-30T11:37:03.639572757Z"
+generated: "2021-04-30T13:21:11.202649628Z"
