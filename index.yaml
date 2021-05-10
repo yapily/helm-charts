@@ -253,6 +253,29 @@ entries:
     version: 0.3.6
   base:
   - apiVersion: v2
+    created: "2021-05-10T17:34:39.504816719Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 56e87f24a1995e6ad9259d9e0c12cc0fedb49e6dcaf53b91866d43ca3b8d138e
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.4.3/base-0.4.3.tgz
+    version: 0.4.3
+  - apiVersion: v2
     created: "2021-04-30T13:21:11.202561428Z"
     description: A Helm chart for Kubernetes with helm named templates
     digest: 53ce2176dd0a170a74a88da744ddfd19376468fdd9a1ec3d8346b9e982ddaf11
@@ -483,6 +506,23 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/base-0.2.0/base-0.2.0.tgz
     version: 0.2.0
   cronjob:
+  - apiVersion: v2
+    created: "2021-05-10T17:34:39.644910031Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes cronjob
+    digest: 369fe7f95a5770b050af29f1db08ba8cf67313c901b417c512f68c120a7b4870
+    keywords:
+    - cronjob
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: cronjob
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/cronjob-0.4.1/cronjob-0.4.1.tgz
+    version: 0.4.1
   - apiVersion: v2
     created: "2021-04-26T10:03:36.233871997Z"
     dependencies:
@@ -784,4 +824,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-04-30T13:21:11.202649628Z"
+generated: "2021-05-10T17:34:39.645024931Z"
