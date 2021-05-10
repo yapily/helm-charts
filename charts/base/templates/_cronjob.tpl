@@ -27,6 +27,9 @@ spec:
   {{- if $deploymentValues.Values.successfulJobsHistoryLimit }}
   successfulJobsHistoryLimit: {{ $deploymentValues.Values.successfulJobsHistoryLimit }}
   {{- end }}
+  {{- if $deploymentValues.Values.startingDeadlineSeconds }}
+  startingDeadlineSeconds: {{ $deploymentValues.Values.startingDeadlineSeconds }}
+  {{- end }}
   schedule: {{ $deploymentValues.Values.schedule | quote }}
   jobTemplate:
     spec:
