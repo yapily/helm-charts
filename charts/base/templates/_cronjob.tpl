@@ -13,9 +13,9 @@ metadata:
 {{- else }}
   name: {{ $deploymentName }}
 {{- end }}
-  {{- with $deploymentValues.Values.annotations }}
+  {{- if $deploymentValues.Values.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
+    {{- include "base.valuesPairs" $deploymentValues.Values.annotations | trim | nindent 4 }}
   {{- end }}
 spec:
   {{- if $deploymentValues.Values.concurrencyPolicy }}

@@ -56,8 +56,8 @@ spec:
       {{- if or $deploymentValues.Values.prometheusScrape $deploymentValues.Values.podAnnotations }}
       annotations:
         {{- if $deploymentValues.Values.prometheusScrape }}
-        prometheus.io/path: {{ $deploymentValues.Values.prometheusScrapePath }}
-        prometheus.io/port: {{ $deploymentValues.Values.prometheusScrapePort }}
+        prometheus.io/path: {{ $deploymentValues.Values.prometheusScrapePath | quote }}
+        prometheus.io/port: {{ $deploymentValues.Values.prometheusScrapePort | quote }}
         prometheus.io/scrape: "true"
         {{- end }}
         {{- include "base.valuesPairs" $deploymentValues.Values.podAnnotations | trim | nindent 8 }}
