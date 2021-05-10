@@ -18,9 +18,9 @@ metadata:
     {{- with $deploymentValues.Values.labelsDeployment }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
-  {{- with $deploymentValues.Values.annotations }}
+  {{- if $deploymentValues.Values.annotations }}
   annotations:
-    {{- toYaml . | nindent 4 }}
+    {{- include "base.valuesPairs" $deploymentValues.Values.annotations | trim | nindent 4 }}
   {{- end }}
 spec:
   {{- if and $deploymentValues.Values.argo.rollouts.enabled ( eq $deploymentValues.Values.argo.rollouts.type "workloadRef" ) }}
@@ -55,15 +55,13 @@ spec:
     metadata:
       {{- if or $deploymentValues.Values.prometheusScrape $deploymentValues.Values.podAnnotations }}
       annotations:
-      {{- if $deploymentValues.Values.prometheusScrape }}
+        {{- if $deploymentValues.Values.prometheusScrape }}
         prometheus.io/path: {{ $deploymentValues.Values.prometheusScrapePath }}
         prometheus.io/port: {{ $deploymentValues.Values.prometheusScrapePort }}
         prometheus.io/scrape: "true"
+        {{- end }}
+        {{- include "base.valuesPairs" $deploymentValues.Values.podAnnotations | trim | nindent 8 }}
       {{- end }}
-    {{- with $deploymentValues.Values.podAnnotations }}
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
-    {{- end }}
       labels:
         {{- include "base.selectorLabels" $deploymentValues | nindent 8 }}
     spec:

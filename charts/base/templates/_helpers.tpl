@@ -75,3 +75,11 @@ service port default
 {{- end }}
 
 
+{{/*
+range values pairs
+*/}}
+{{- define "base.valuesPairs" -}}
+{{- range $key, $value := . }}
+{{ $key }}: {{ $value | quote }}
+{{- end }}
+{{- end }}
