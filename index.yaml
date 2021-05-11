@@ -2,12 +2,12 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
-    created: "2021-05-11T15:14:24.682299513Z"
+    created: "2021-05-11T15:14:44.963929403Z"
     dependencies:
     - name: base
       repository: file://../base
     description: A Helm chart for Kubernetes Deployment
-    digest: bf80aa37c4cf7ba4f2ef9c9e243f3ddf203624bfbbfdd108c60e343569305b1e
+    digest: effbd8f557bc06b32112ac314f7d226ac169b4f968a65f6fd64bf054d82ff31a
     keywords:
     - deployment
     - configmap
@@ -24,8 +24,8 @@ entries:
     name: app
     type: application
     urls:
-    - https://github.com/yapily/helm-charts/releases/download/app-0.4.8/app-0.4.8.tgz
-    version: 0.4.8
+    - https://github.com/yapily/helm-charts/releases/download/app-0.4.9/app-0.4.9.tgz
+    version: 0.4.9
   - apiVersion: v2
     created: "2021-05-11T14:50:22.542198283Z"
     dependencies:
@@ -377,29 +377,6 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
-  - apiVersion: v2
-    created: "2021-05-11T15:14:24.829571238Z"
-    description: A Helm chart for Kubernetes with helm named templates
-    digest: 324f300954fd26eca890e0fa6bbcff6af8b0115f04c3480cbf2d9c9ceac9c09e
-    keywords:
-    - deployment
-    - configmap
-    - secret
-    - HorizontalPodAutoscaler
-    - hpa
-    - VerticalPodAutoscaler
-    - podDisruptionBudget
-    - service
-    - ingress
-    - storageClass
-    maintainers:
-    - name: juri
-      url: https://github.com/juriku/helm-charts
-    name: base
-    type: library
-    urls:
-    - https://github.com/yapily/helm-charts/releases/download/base-0.4.8/base-0.4.8.tgz
-    version: 0.4.8
   - apiVersion: v2
     created: "2021-05-11T14:50:22.688309822Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -1092,4 +1069,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-05-11T15:14:24.829799638Z"
+generated: "2021-05-11T15:14:44.964105805Z"
