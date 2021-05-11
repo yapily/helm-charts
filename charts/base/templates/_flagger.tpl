@@ -9,9 +9,28 @@ metadata:
   {{- else }}
   name: {{ include "base.fullname" . }}
   {{- end }}
-{{- with .Values.flagger.spec }}
 spec:
-  {{- toYaml . | nindent 2 }}
-{{- end }}
+  {{- with .Values.flagger.ingressRef }}
+  ingressRef:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  targetRef:
+    apiVersion: {{ .Values.apiVersion | default "apps/v1" }}
+    kind: Deployment
+    name: {{ include "base.fullname" . }}
+  autoscalerRef:
+    apiVersion: autoscaling/v2beta1
+    kind: HorizontalPodAutoscaler
+    name: {{ include "base.fullname" . }}
+  service:
+  {{- if .Values.flagger.service }}
+    port: {{ .Values.flagger.service.name }}
+  {{- else }}
+    port: {{ include "base.servicePortDefaultNum" . }}
+  {{- end }}
+  {{- with .Values.flagger.analysis }}
+  analysis:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 {{- end }}
 {{- end }}
