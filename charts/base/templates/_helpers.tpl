@@ -75,6 +75,28 @@ service port default
 {{- end }}
 
 {{/*
+service port default
+*/}}
+{{- define "base.servicePortDefaultNum" -}}
+{{- $serviceValues := .Values.service | default dict -}}
+{{- if $serviceValues.ports }}
+{{- if .Values.service.ports.http }}
+{{- .Values.service.ports.http }}
+{{- else }}
+{{- values .Values.service.ports | first }}
+{{- end }}
+{{- else if .Values.containerPorts }}
+{{- if .Values.containerPorts.http }}
+{{- .Values.containerPorts.http }}
+{{- else }}
+{{- values .Values.containerPorts | first }}
+{{- end }}
+{{- else }}
+{{- printf "80" }}
+{{- end }}
+{{- end }}
+
+{{/*
 range values pairs
 */}}
 {{- define "base.valuesPairs" -}}
