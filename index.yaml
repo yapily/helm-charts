@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-05-11T11:20:43.93002998Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: dcaa42183c4a482e1052ad9e8a7c08e5e6f711c14dbb5e01bfd3860ee51f0239
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.4.5/app-0.4.5.tgz
+    version: 0.4.5
+  - apiVersion: v2
     created: "2021-05-10T17:41:43.105118414Z"
     dependencies:
     - name: base
@@ -277,6 +302,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
+  - apiVersion: v2
+    created: "2021-05-11T11:20:44.040023265Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: c2e4517095005aa49b34244eb4df1f6e86232b4a37262e35b695e92555d117e9
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.4.5/base-0.4.5.tgz
+    version: 0.4.5
   - apiVersion: v2
     created: "2021-05-10T17:41:43.276176603Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -890,6 +938,23 @@ entries:
     version: 0.2.1
   service:
   - apiVersion: v2
+    created: "2021-05-11T11:20:44.155185755Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes service
+    digest: bf7eb9e3586ef4d87b38ba938263ccd5de87f3b2a9efb69e891d5d851bc95398
+    keywords:
+    - service
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: service
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/service-0.4.5/service-0.4.5.tgz
+    version: 0.4.5
+  - apiVersion: v2
     created: "2021-03-30T09:14:50.774045097Z"
     dependencies:
     - name: base
@@ -906,4 +971,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-05-10T17:41:43.634733802Z"
+generated: "2021-05-11T11:20:44.155457555Z"
