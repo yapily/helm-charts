@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-05-11T14:50:22.542198283Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: cab18daec2c03cc2278b5d07e28682f67c5b29cbef0d27d354ee4a7a3157f199
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.4.7/app-0.4.7.tgz
+    version: 0.4.7
+  - apiVersion: v2
     created: "2021-05-11T11:32:04.211763693Z"
     dependencies:
     - name: base
@@ -327,6 +352,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
+  - apiVersion: v2
+    created: "2021-05-11T14:50:22.688309822Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 48734aa2674b18911bda34df5636352525f517ba74e15adfe1a9ddb12e0f5752
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.4.7/base-0.4.7.tgz
+    version: 0.4.7
   - apiVersion: v2
     created: "2021-05-11T11:20:44.040023265Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -996,4 +1044,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-05-11T11:32:04.2119489Z"
+generated: "2021-05-11T14:50:22.688536821Z"
