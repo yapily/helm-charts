@@ -29,6 +29,21 @@ spec:
   {{- end }}
   {{- else }}
     portName: {{ include "base.servicePortDefault" . }}
+    {{- $serviceValues := .Values.service | default dict -}}
+    {{- if $serviceValues.ports }}
+    {{- if .Values.service.ports.http }}
+    port: {{ .Values.service.ports.http }}
+    {{- else }}
+    port: {{ values .Values.service.ports | first }}
+    {{- end }}
+    {{- end }}
+    {{- if .Values.containerPorts }}
+    {{- if .Values.containerPorts.http }}
+    targetPort: {{ .Values.containerPorts.http }}
+    {{- else }}
+    targetPort: {{- values .Values.containerPorts | first }}
+    {{- end }}
+  {{- end }}
   {{- end }}
   {{- with .Values.flagger.analysis }}
   analysis:
