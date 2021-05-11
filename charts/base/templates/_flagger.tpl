@@ -24,9 +24,11 @@ spec:
     name: {{ include "base.fullname" . }}
   service:
   {{- if .Values.flagger.service }}
-    port: {{ .Values.flagger.service.name }}
+  {{- with .Values.flagger.service }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
   {{- else }}
-    port: {{ include "base.servicePortDefaultNum" . }}
+    portName: {{ include "base.servicePortDefault" . }}
   {{- end }}
   {{- with .Values.flagger.analysis }}
   analysis:
