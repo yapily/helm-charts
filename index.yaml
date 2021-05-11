@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-05-11T16:45:43.373968897Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: 26dc1787ceef54b17e1c3171bb3f6376745163924b2c3ed18f630c9074eb07b7
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.4.13/app-0.4.13.tgz
+    version: 0.4.13
+  - apiVersion: v2
     created: "2021-05-11T16:35:20.046503701Z"
     dependencies:
     - name: base
@@ -452,6 +477,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
+  - apiVersion: v2
+    created: "2021-05-11T16:45:43.477385896Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: ff15d5d16367b005fe6ab3c06de9799fb21192221f0bddb8fc5527a369e152ee
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.4.13/base-0.4.13.tgz
+    version: 0.4.13
   - apiVersion: v2
     created: "2021-05-11T16:32:21.843588573Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -1167,4 +1215,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-05-11T16:35:20.046844801Z"
+generated: "2021-05-11T16:45:43.477682598Z"
