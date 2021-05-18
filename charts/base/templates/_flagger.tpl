@@ -22,6 +22,9 @@ spec:
     apiVersion: autoscaling/v2beta1
     kind: HorizontalPodAutoscaler
     name: {{ include "base.fullname" . }}
+  {{- if .Values.flagger.progressDeadlineSeconds }}
+  progressDeadlineSeconds: {{ .Values.flagger.progressDeadlineSeconds }}
+  {{- end }}
   service:
   {{- if .Values.flagger.service }}
   {{- with .Values.flagger.service }}
