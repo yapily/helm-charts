@@ -18,10 +18,12 @@ spec:
     apiVersion: {{ .Values.apiVersion | default "apps/v1" }}
     kind: Deployment
     name: {{ include "base.fullname" . }}
+  {{- if .Values.autoscaling.enabled }}
   autoscalerRef:
     apiVersion: autoscaling/v2beta1
     kind: HorizontalPodAutoscaler
     name: {{ include "base.fullname" . }}
+  {{- end }}
   {{- if .Values.flagger.progressDeadlineSeconds }}
   progressDeadlineSeconds: {{ .Values.flagger.progressDeadlineSeconds }}
   {{- end }}
