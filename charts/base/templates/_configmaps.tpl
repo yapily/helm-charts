@@ -15,7 +15,7 @@ metadata:
   {{- end }}
 data:
 {{- range $key, $value := $configValuesList.values }}
-  {{ $key -}}: {{ $value | quote -}}
+  {{ $key -}}: {{ $value | default "" | quote }}
 {{- end }}
 {{- range $key, $value := $configValuesList.valuesMultiLine }}
   {{ $key -}}: |-

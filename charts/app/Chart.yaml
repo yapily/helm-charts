@@ -3,7 +3,7 @@ name: app
 description: A Helm chart for Kubernetes Deployment
 type: application
 
-version: 0.4.22
+version: 0.4.23
 
 keywords:
   - deployment

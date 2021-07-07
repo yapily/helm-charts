@@ -143,7 +143,7 @@ env:
 {{- end }}
 {{- range $key, $value := .environment.variables }}
   - name: {{ $key | quote }}
-    value: {{ $value | quote -}}
+    value: {{ $value | default "" | quote }}
 {{- end }}
 {{- end }}
 {{- end }}
