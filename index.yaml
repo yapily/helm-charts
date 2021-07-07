@@ -1854,6 +1854,23 @@ entries:
     version: 0.2.1
   service:
   - apiVersion: v2
+    created: "2021-07-07T12:51:10.347076332Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes service
+    digest: fe1a8a3768d0e4b16a945b506e799856640b0fcd501238e7173ef43845d343bd
+    keywords:
+    - service
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: service
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/service-0.5.0/service-0.5.0.tgz
+    version: 0.5.0
+  - apiVersion: v2
     created: "2021-07-07T12:49:23.408098227Z"
     dependencies:
     - name: base
@@ -1955,4 +1972,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-07-07T12:49:23.408739436Z"
+generated: "2021-07-07T12:51:10.347683536Z"
