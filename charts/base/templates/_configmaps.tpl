@@ -15,9 +15,7 @@ metadata:
   {{- end }}
 data:
 {{- range $key, $value := $configValuesList.values }}
-  {{- if ( $value | toString ) }}
   {{ $key -}}: {{ $value | quote -}}
-  {{- end }}
 {{- end }}
 {{- range $key, $value := $configValuesList.valuesMultiLine }}
   {{ $key -}}: |-
