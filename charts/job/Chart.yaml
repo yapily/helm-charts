@@ -3,7 +3,7 @@ name: job
 description: A Helm chart for Kubernetes job
 type: application
 
-version: 0.5.0
+version: 0.5.1
 
 keywords:
   - cronjob
