@@ -73,7 +73,7 @@ spec:
     - type: External
       external:
         metric:
-         name: pubsub.googleapis.com|subscription|{{ .metric | default "num_undelivered_messages" | quote }}
+         name: pubsub.googleapis.com|subscription|{{ .metric | default "num_undelivered_messages" }}
          selector:
            matchLabels:
              resource.labels.subscription_id: {{ .subscription_id | quote }}

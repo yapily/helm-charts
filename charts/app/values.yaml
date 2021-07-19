@@ -153,8 +153,15 @@ autoscaling:
   enabled: false
   minReplicas: 2
   maxReplicas: 10
-  # targetCPUUtilizationPercentage: 50
-  # targetMemoryUtilizationPercentage: 80
+  # pubsub_subscription:
+  # - subscription_id: "subscription"
+  #   metric: "num_undelivered_messages"
+  #   AverageValue: 200
+  # cpu:
+  # - type: Utilization
+  #   averageUtilization: 50
+  # memory:
+  # - averageUtilization: 50
 
 # ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/
 podDisruptionBudget:
