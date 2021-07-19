@@ -39,10 +39,10 @@ metadata:
   name: {{ include "base.fullname" . }}
 spec:
   secretTargetRef:
-  {{- with .Values.keda.secretTargetRef }}
+  {{- range .Values.keda.secretTargetRef }}
   - parameter: {{ .parameter | default "GoogleApplicationCredentials" | quote }} 
     name: {{ .name | quote }}
-    redentialsFromEnv: {{ .credentialsFromEnv | default "GOOGLE_APPLICATION_CREDENTIALS" | quote }}
+    key: {{ .key | default "GOOGLE_APPLICATION_CREDENTIALS" | quote }}
   {{- end }}
 {{- end }}
 {{- end }}

@@ -188,6 +188,9 @@ keda:
   #     subscriptionSize: "5"
   #     subscriptionName: "audit-logs-subscription"
   #     credentialsFromEnv: "GOOGLE_APPLICATION_CREDENTIALS"
+  ## or 
+  #   authenticationRef:
+  #       name: .Release.Name
   # secretTargetRef:
   # - parameter: GoogleApplicationCredentials # - Default is GoogleApplicationCredentials
   #   name: pubsub-secret        # Required. Refers to the name of the secret
