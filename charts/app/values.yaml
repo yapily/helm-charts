@@ -153,7 +153,7 @@ autoscaling:
   enabled: false
   minReplicas: 2
   maxReplicas: 10
-  targetCPUUtilizationPercentage: 50
+  # targetCPUUtilizationPercentage: 50
   # targetMemoryUtilizationPercentage: 80
 
 # ref: https://kubernetes.io/docs/tasks/run-application/configure-pdb/

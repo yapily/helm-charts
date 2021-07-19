@@ -212,7 +212,9 @@ define container security
 {{- define "base.imagePullSecrets" -}}
 {{- if .imagePullSecrets }}
 imagePullSecrets:
-  - name: {{ .imagePullSecrets }}
+{{- range .imagePullSecrets }}
+  - name: {{ . }}
+{{- end }}
 {{- end }}
 {{- end }}
 
