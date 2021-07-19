@@ -1,7 +1,7 @@
 {{- define "base.keda" -}}
 {{- if .Values.keda.enabled }}
 {{- $root := . -}}
----           
+---
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject
 metadata:
@@ -19,10 +19,10 @@ spec:
     {{- if .Values.keda.envSourceContainerName }}
     envSourceContainerName: {{ .Values.keda.envSourceContainerName | quote }}
     {{- end }}
-  pollingInterval: {{ .Values.keda.pollingInterval | default "30" | quote }}
-  cooldownPeriod: {{ .Values.keda.cooldownPeriod | default "300" | quote }}
-  minReplicaCount: {{ .Values.keda.minReplicaCount | default "2" | quote }}
-  maxReplicaCount: {{ .Values.keda.maxReplicaCount | default "10" | quote }}
+  pollingInterval: {{ .Values.keda.pollingInterval | default "30" }}
+  cooldownPeriod: {{ .Values.keda.cooldownPeriod | default "300" }}
+  minReplicaCount: {{ .Values.keda.minReplicaCount | default "2" }}
+  maxReplicaCount: {{ .Values.keda.maxReplicaCount | default "10" }}
   {{- with .Values.keda.advanced }}
   advanced:
     {{- toYaml . | nindent 4 }}
