@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-07-21T08:32:53.324678383Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: 281b09e1c3c9b8242db68eee9402e6e97b3b89351988ff2a3cf98d7ec50d06b3
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.5.8/app-0.5.8.tgz
+    version: 0.5.8
+  - apiVersion: v2
     created: "2021-07-19T17:46:22.234124102Z"
     dependencies:
     - name: base
@@ -827,6 +852,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
+  - apiVersion: v2
+    created: "2021-07-21T08:32:53.508858595Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: d8f94d4bab80836e0bd91b0f4981045dd0911b820f46025f7ca5cbb03b4fa388
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.5.8/base-0.5.8.tgz
+    version: 0.5.8
   - apiVersion: v2
     created: "2021-07-19T17:46:22.507676229Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -2349,4 +2397,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-07-19T17:46:22.508421732Z"
+generated: "2021-07-21T08:32:53.509850401Z"
