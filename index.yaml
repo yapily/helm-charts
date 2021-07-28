@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-07-28T13:14:11.951398201Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: 26251162b28c28544c05440163065d7f6fae5987d44bfddee21f155bf375ba71
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.6.1/app-0.6.1.tgz
+    version: 0.6.1
+  - apiVersion: v2
     created: "2021-07-21T10:12:02.453090266Z"
     dependencies:
     - name: base
@@ -877,6 +902,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
   base:
+  - apiVersion: v2
+    created: "2021-07-28T13:14:12.130062968Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 663e3c9ba93e6f09108dba6b0753539ceeb8d55d9dbe91449e5ea91d20520aa8
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.6.1/base-0.6.1.tgz
+    version: 0.6.1
   - apiVersion: v2
     created: "2021-07-21T10:12:02.642837399Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -1820,6 +1868,27 @@ entries:
     version: 0.2.1
   default-base:
   - apiVersion: v2
+    created: "2021-07-28T13:14:12.288082138Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes - default-base for namespaces
+    digest: adc7054e7fdc95dab747dec57fa4c9c91ed888346d95da7993b956422c491043
+    keywords:
+    - BackendConfig
+    - StorageClass
+    - configmap
+    - secret
+    - tls
+    - dockerconfigjson
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: default-base
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/default-base-0.6.1/default-base-0.6.1.tgz
+    version: 0.6.1
+  - apiVersion: v2
     created: "2021-07-21T10:12:03.05512156Z"
     dependencies:
     - name: base
@@ -2534,4 +2603,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-07-21T10:12:03.574925577Z"
+generated: "2021-07-28T13:14:12.288993051Z"
