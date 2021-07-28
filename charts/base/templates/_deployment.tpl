@@ -64,7 +64,7 @@ spec:
       labels:
         {{- include "base.selectorLabels" $deploymentValues | nindent 8 }}
     spec:
-      {{- with include "base.containerDefaultProperties" $deploymentValues }}
+      {{- with include "base.podDefaultProperties" $deploymentValues }}
       {{- . | trim | nindent 6 }}
       {{- end }}
       {{- if $deploymentValues.Values.initContainers }}
@@ -78,7 +78,7 @@ spec:
               containerPort: {{ $value }}
               protocol: TCP
           {{- end }}
-          {{- with include "base.podDefaultProperties" $containerValues }}
+          {{- with include "base.containerDefaultProperties" $containerValues }}
           {{- . | trim | nindent 10 }}
           {{- end }}
         {{- end }}
@@ -93,7 +93,7 @@ spec:
               containerPort: {{ $value }}
               protocol: TCP
           {{- end }}
-          {{- with include "base.podDefaultProperties" $containerValues }}
+          {{- with include "base.containerDefaultProperties" $containerValues }}
           {{- . | trim | nindent 10 }}
           {{- end }}
         {{- end }}
@@ -114,7 +114,7 @@ spec:
               protocol: TCP
           {{- end }}
           {{- end }}
-          {{- with include "base.podDefaultProperties" $deploymentValues.Values }}
+          {{- with include "base.containerDefaultProperties" $deploymentValues.Values }}
           {{- . | trim | nindent 10 }}
           {{- end }}
       {{- if $deploymentValues.Values.terminationGracePeriodSeconds }}
