@@ -901,6 +901,25 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/app-0.3.6/app-0.3.6.tgz
     version: 0.3.6
+  argocd-workflows:
+  - apiVersion: v2
+    created: "2021-08-06T13:22:08.618783243Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes argocd workflows
+    digest: d7cc0ba16412f415992d3434749969bf64f0b5645c2c3ed22fc5a09c08386f2e
+    keywords:
+    - argocd
+    - workflows
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: argocd-workflows
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/argocd-workflows-0.1.0/argocd-workflows-0.1.0.tgz
+    version: 0.1.0
   base:
   - apiVersion: v2
     created: "2021-07-28T13:14:12.130062968Z"
@@ -2603,4 +2622,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-07-28T13:14:12.288993051Z"
+generated: "2021-08-06T13:22:08.619418325Z"
