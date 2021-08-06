@@ -1,0 +1,18 @@
+apiVersion: v2
+name: argocd-workflows
+description: A Helm chart for Kubernetes argocd workflows
+type: application
+
+version: 0.1.0
+
+keywords:
+  - argocd
+  - workflows
+
+maintainers:
+  - name: juri
+    url: https://github.com/juriku/helm-charts
+
+dependencies:
+  - name: base
+    repository: file://../base
