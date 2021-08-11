@@ -1,6 +1,6 @@
 apiVersion: v2
-name: argo-workflows
-description: A Helm chart for Kubernetes argocd workflows
+name: argo-applications
+description: A Helm chart for Kubernetes argo applications
 type: application
 
 version: 0.1.1
