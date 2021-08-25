@@ -2636,6 +2636,21 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/job-0.2.1/job-0.2.1.tgz
     version: 0.2.1
+  rbac:
+  - apiVersion: v2
+    created: "2021-08-25T12:11:17.662937057Z"
+    description: A Helm chart for Kubernetes rbac
+    digest: 13a3c644b9b060131eb3dba31ce1c084ee4204c281f82c65ed751a8ba6fa8c8d
+    keywords:
+    - rbac
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: rbac
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/rbac-0.1.0/rbac-0.1.0.tgz
+    version: 0.1.0
   service:
   - apiVersion: v2
     created: "2021-07-21T10:12:03.569455433Z"
@@ -2790,4 +2805,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-08-16T15:08:48.491626865Z"
+generated: "2021-08-25T12:11:17.663679462Z"
