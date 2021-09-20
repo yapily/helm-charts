@@ -25,9 +25,7 @@ metadata:
 spec:
   {{- if and $deploymentValues.Values.argo.rollouts.enabled ( eq $deploymentValues.Values.argo.rollouts.type "workloadRef" ) }}
   replicas: 0
-  {{- else if $deploymentValues.Values.autoscaling.enabled }}
-  replicas: {{ $deploymentValues.Values.autoscaling.minReplicas }}
-  {{- else }}
+  {{- else if not $deploymentValues.Values.autoscaling.enabled }}
   replicas: {{ $deploymentValues.Values.replicaCount }}
   {{- end }}
   {{- if $deploymentValues.Values.argo.rollouts.enabled }}
