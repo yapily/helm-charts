@@ -2,6 +2,31 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2021-11-16T15:36:20.736730343Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+    description: A Helm chart for Kubernetes Deployment
+    digest: 05ea2e72beae2f065661bee7a3fba04dc5480036e426a2a9bb38df21bfd989dd
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.6.5/app-0.6.5.tgz
+    version: 0.6.5
+  - apiVersion: v2
     created: "2021-09-20T15:49:46.665530647Z"
     dependencies:
     - name: base
@@ -1034,6 +1059,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/argocd-workflows-0.1.0/argocd-workflows-0.1.0.tgz
     version: 0.1.0
   base:
+  - apiVersion: v2
+    created: "2021-11-16T15:36:20.988146383Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: c7a63fbcc26b883f5d461d0a72662ffa0afb87a80457109a1067cbdd8b0350f7
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.6.5/base-0.6.5.tgz
+    version: 0.6.5
   - apiVersion: v2
     created: "2021-09-20T15:49:46.853996489Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -2853,4 +2901,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2021-09-20T15:49:46.855402798Z"
+generated: "2021-11-16T15:36:20.989154096Z"
