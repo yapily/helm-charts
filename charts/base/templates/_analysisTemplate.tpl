@@ -1,5 +1,6 @@
 {{- define "base.analysisTemplate" -}}
 {{- if .Values.argo.analysis.enabled -}}
+---
 kind: AnalysisTemplate
 apiVersion: argoproj.io/v1alpha1
 metadata:
