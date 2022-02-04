@@ -3,7 +3,7 @@ name: app
 description: A Helm chart for Kubernetes Deployment
 type: application
 
-version: 0.6.6
+version: 0.6.8
 
 keywords:
   - deployment
@@ -25,4 +25,3 @@ dependencies:
   - name: base
     version: ~0
     repository: file://../base
-    version: 0.6.7
