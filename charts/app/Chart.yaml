@@ -23,3 +23,4 @@ maintainers:
 dependencies:
   - name: base
     repository: file://../base
+    version: 0.6.5
