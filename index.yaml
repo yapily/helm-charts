@@ -2,6 +2,33 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2022-02-04T10:35:11.843004813Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes Deployment
+    digest: d7fbefd893a28e600250c63604924dbc4737613076979be8e99a1de794bb2379
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - analysisTemplate
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.6.9/app-0.6.9.tgz
+    version: 0.6.9
+  - apiVersion: v2
     created: "2022-01-20T16:38:28.886987086Z"
     dependencies:
     - name: base
@@ -1030,6 +1057,25 @@ entries:
     version: 0.3.6
   argo-applications:
   - apiVersion: v2
+    created: "2022-02-04T10:35:11.975939324Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes argo applications
+    digest: f9b58e4f0ccc596ca536a848991b0fa4931cada5ae4b17c5fcd8bc67415b2c1e
+    keywords:
+    - argocd
+    - workflows
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: argo-applications
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/argo-applications-0.1.2/argo-applications-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
     created: "2021-08-11T10:54:33.124458392Z"
     dependencies:
     - name: base
@@ -1086,6 +1132,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/argocd-workflows-0.1.0/argocd-workflows-0.1.0.tgz
     version: 0.1.0
   base:
+  - apiVersion: v2
+    created: "2022-02-04T10:35:12.121945834Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: d18e29ac511d07a2bec322cb787fb1a7ec66637b89dd96fb2e34d42daebb5d29
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.6.9/base-0.6.9.tgz
+    version: 0.6.9
   - apiVersion: v2
     created: "2022-01-20T16:38:29.023451217Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -2951,4 +3020,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2022-01-20T16:38:29.024376265Z"
+generated: "2022-02-04T10:35:12.122905242Z"
