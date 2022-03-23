@@ -3,7 +3,7 @@
 {{- range $deploymentName, $deploymentValuesOverride := .Values.deployments }}
 {{- $deploymentValues := merge dict $deploymentValuesOverride $root }}
 ---
-apiVersion: {{ $deploymentValues.Values.apiVersion | default "batch/v1beta1" }}
+apiVersion: {{ $deploymentValues.Values.apiVersion | default "batch/v1" }}
 kind: CronJob
 metadata:
 {{- if eq ( $deploymentName ) "default" }}
