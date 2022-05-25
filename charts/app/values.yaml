@@ -90,6 +90,8 @@ service:
   # labels:
   #   key: value
   # loadBalancerIP: ""
+  ## https://kubernetes.io/docs/concepts/services-networking/service/#externalname
+  # ExternalName: my.database.example.com
   # externalTrafficPolicy: Local
   # ports:
     ## list of ports
