@@ -2,6 +2,33 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2022-05-25T15:09:33.821447176Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes Deployment
+    digest: f42ef93b04f2bb3e21487595163607f06130b8603cff0ce2dba2520efb4bf494
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - analysisTemplate
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.6.12/app-0.6.12.tgz
+    version: 0.6.12
+  - apiVersion: v2
     created: "2022-03-23T16:00:52.610663016Z"
     dependencies:
     - name: base
@@ -1201,6 +1228,29 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/argocd-workflows-0.1.0/argocd-workflows-0.1.0.tgz
     version: 0.1.0
   base:
+  - apiVersion: v2
+    created: "2022-05-25T15:09:33.993637791Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 0f9026d66f138b673bff9e1b2fed72c7e61d0a6f2def503ec2a0a7f19701ee9f
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.6.12/base-0.6.12.tgz
+    version: 0.6.12
   - apiVersion: v2
     created: "2022-03-23T16:00:52.747275223Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -2983,6 +3033,24 @@ entries:
     version: 0.1.0
   service:
   - apiVersion: v2
+    created: "2022-05-25T15:09:34.20074315Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes service
+    digest: 5dc5e49d317640746b0118f72b81d5e1b5b852a35dc37432c94da7b1b12378a6
+    keywords:
+    - service
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: service
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/service-0.6.12/service-0.6.12.tgz
+    version: 0.6.12
+  - apiVersion: v2
     created: "2021-07-21T10:12:03.569455433Z"
     dependencies:
     - name: base
@@ -3135,4 +3203,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2022-05-12T09:09:35.752259828Z"
+generated: "2022-05-25T15:09:34.201665451Z"
