@@ -27,7 +27,7 @@ spec:
   {{- end }}
   {{- if .Values.service.ExternalName }}
   type: ExternalName
-  externalName: {{ $serviceValues.ExternalName | quote }}
+  externalName: {{ .Values.service.ExternalName | quote }}
   {{- else }}
   type: {{ .Values.service.type }}
   {{- if .Values.service.ports }}
