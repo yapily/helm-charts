@@ -19,7 +19,6 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  type: {{ .Values.service.type }}
   {{- if .Values.service.externalTrafficPolicy }}
   externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
   {{- end }}
@@ -27,8 +26,10 @@ spec:
   loadBalancerIP: {{ .Values.service.loadBalancerIP | quote }}
   {{- end }}
   {{- if $serviceValues.ExternalName }}
+  type: ExternalName
   externalName: {{ $serviceValues.ExternalName | quote }}
-  {{- end }}
+  {{- else }}
+  type: {{ .Values.service.type }}
   {{- if .Values.service.ports }}
   ports:
   {{- range $key, $value := .Values.service.ports }}
@@ -52,6 +53,7 @@ spec:
   {{- end }}
   selector:
     {{- include "base.selectorLabels" . | nindent 4 }}
+  {{- end }}
 {{- end }}
 {{- if .Values.extraServices }}
 {{- $root := . -}}
@@ -71,13 +73,17 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  type: {{ $serviceValues.type | default $root.Values.service.type }}
   {{- if $serviceValues.externalTrafficPolicy }}
   externalTrafficPolicy: {{ $serviceValues.externalTrafficPolicy }}
   {{- end }}
   {{- if $serviceValues.loadBalancerIP }}
   loadBalancerIP: {{ $serviceValues.loadBalancerIP | quote }}
   {{- end }}
+  {{- if $serviceValues.ExternalName }}
+  type: ExternalName
+  externalName: {{ $serviceValues.ExternalName | quote }}
+  {{- else }}
+  type: {{ $serviceValues.type | default $root.Values.service.type }}
   ports:
   {{- if $serviceValues.ports }}
   {{- range $key, $value := $serviceValues.ports }}
@@ -108,6 +114,7 @@ spec:
   {{- end }}
   selector:
     {{- include "base.selectorLabels" $root | nindent 4 }}
+  {{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
