@@ -75,8 +75,11 @@ spec:
   {{- if $serviceValues.loadBalancerIP }}
   loadBalancerIP: {{ $serviceValues.loadBalancerIP | quote }}
   {{- end }}
-  ports:
+  {{- if $serviceValues.ExternalName }}
+  externalName: {{ $serviceValues.ExternalName | quote }}
+  {{- end }}
   {{- if $serviceValues.ports }}
+  ports:
   {{- range $key, $value := $serviceValues.ports }}
     - port: {{ $value }}
       targetPort: {{ $key | quote }}
