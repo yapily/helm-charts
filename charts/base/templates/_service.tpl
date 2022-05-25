@@ -25,7 +25,7 @@ spec:
   {{- if .Values.service.loadBalancerIP }}
   loadBalancerIP: {{ .Values.service.loadBalancerIP | quote }}
   {{- end }}
-  {{- if $serviceValues.ExternalName }}
+  {{- if .Values.service.ExternalName }}
   type: ExternalName
   externalName: {{ $serviceValues.ExternalName | quote }}
   {{- else }}
