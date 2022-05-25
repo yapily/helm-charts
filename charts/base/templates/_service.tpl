@@ -26,8 +26,11 @@ spec:
   {{- if .Values.service.loadBalancerIP }}
   loadBalancerIP: {{ .Values.service.loadBalancerIP | quote }}
   {{- end }}
-  ports:
+  {{- if $serviceValues.ExternalName }}
+  externalName: {{ $serviceValues.ExternalName | quote }}
+  {{- end }}
   {{- if .Values.service.ports }}
+  ports:
   {{- range $key, $value := .Values.service.ports }}
     - port: {{ $value }}
       targetPort: {{ $key | quote }}
@@ -75,11 +78,8 @@ spec:
   {{- if $serviceValues.loadBalancerIP }}
   loadBalancerIP: {{ $serviceValues.loadBalancerIP | quote }}
   {{- end }}
-  {{- if $serviceValues.ExternalName }}
-  externalName: {{ $serviceValues.ExternalName | quote }}
-  {{- end }}
-  {{- if $serviceValues.ports }}
   ports:
+  {{- if $serviceValues.ports }}
   {{- range $key, $value := $serviceValues.ports }}
     - port: {{ $value }}
       targetPort: {{ $key | quote }}
