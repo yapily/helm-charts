@@ -1,9 +1,3 @@
-deployments:
-  default:
-    Values:
-    #   fullnameOverride: ""
-    #   nameOverride: ""
-
 image:
   # repository:
   pullPolicy: IfNotPresent
