@@ -1,3 +1,4 @@
+{{- define "base.rbac" -}}
 {{- $root := . -}}
 
 {{- if .Values.aggregationRule -}}
@@ -204,4 +205,6 @@ metadata:
   namespace: {{ .namespace | quote }}
   {{- end }}
 {{- end }}
+{{- end }}
+
 {{- end }}
