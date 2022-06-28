@@ -82,11 +82,13 @@ spec:
         {{- range $containerName, $containerValues := $deploymentValues.Values.extraContainers }}
         - name: {{ $containerName }}
           {{- include "base.image" (merge dict $containerValues.image $deploymentValues.Values.image) | nindent 10 }}
-          {{- range $key, $value := $containerValues.containerPorts }}
+          {{- if $containerValues.containerPorts }}
           ports:
+            {{- range $key, $value := $containerValues.containerPorts }}
             - name: {{ $key | quote }}
               containerPort: {{ $value }}
               protocol: TCP
+            {{- end }}
           {{- end }}
           {{- with include "base.containerDefaultProperties" $containerValues }}
           {{- . | trim | nindent 10 }}
@@ -96,18 +98,19 @@ spec:
           {{- include "base.image" $deploymentValues.Values.image | nindent 10 }}
           {{- if $deploymentValues.Values.containerPorts }}
           ports:
-          {{- range $key, $value := $deploymentValues.Values.containerPorts }}
+            {{- range $key, $value := $deploymentValues.Values.containerPorts }}
             - name: {{ $key | quote }}
               containerPort: {{ $value }}
               protocol: TCP
-          {{- end }}
+            {{- end }}
           {{- else if $deploymentValues.Values.service.ports }}
           ports:
-          {{- range $key, $value := $deploymentValues.Values.service.ports }}
-            - name: {{ $key | quote }}
-              containerPort: {{ $value }}
-              protocol: TCP
-          {{- end }}
+            {{- range $deploymentValues.Values.service.ports }}
+            - name: {{ .name | default "http" }}
+              containerPort: {{ .targetPort | default .port }}
+              protocol: {{ .protocol | default "TCP" }}
+              name: {{ .name | default "http" }}
+            {{- end }}
           {{- end }}
           {{- with include "base.containerDefaultProperties" $deploymentValues.Values }}
           {{- . | trim | nindent 10 }}

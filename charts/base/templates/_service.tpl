@@ -1,4 +1,5 @@
 {{- define "base.service" -}}
+{{- if .Values.service.enabled -}}
 {{- $root := . -}}
 {{- $serviceNameOne := .Values.service.name | default (include "base.fullname" .) -}}
 {{- $serviceValuesOne := .Values.service }}
@@ -41,13 +42,13 @@ spec:
   type: {{ $serviceValues.type | default "ClusterIP" }}
   ports:
   {{- if $serviceValues.ports }}
-  {{- range $key, $value := $serviceValues.ports }}
-    - port: {{ $value }}
-      targetPort: {{ $key | quote }}
-      protocol: TCP
-      name: {{ $key | quote }}
-      {{- if $serviceValues.nodePort }}
-      nodePort: {{ $serviceValues.nodePort }}
+  {{- range $serviceValues.ports }}
+    - port: {{ .port }}
+      targetPort: {{ .targetPort | default .port }}
+      protocol: {{ .protocol | default "TCP" }}
+      name: {{ .name | default "http" }}
+      {{- if .nodePort }}
+      nodePort: {{ .nodePort }}
       {{- end }}
   {{- end }}
   {{- else if $root.Values.containerPorts }}
@@ -61,5 +62,6 @@ spec:
   selector:
     {{- include "base.selectorLabels" $root | nindent 4 }}
   {{- end }}
+{{- end }}
 {{- end }}
 {{- end }}

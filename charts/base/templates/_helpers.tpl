@@ -58,10 +58,8 @@ service port default
 {{- define "base.servicePortDefault" -}}
 {{- $serviceValues := .Values.service | default dict -}}
 {{- if $serviceValues.ports }}
-{{- if .Values.service.ports.http }}
-{{- printf "http" }}
-{{- else }}
-{{- keys .Values.service.ports | first }}
+{{- with (index $serviceValues.ports 0) }}
+{{- .name | default "http" }}
 {{- end }}
 {{- else if .Values.containerPorts }}
 {{- if .Values.containerPorts.http }}
@@ -80,10 +78,8 @@ service port default
 {{- define "base.servicePortDefaultNum" -}}
 {{- $serviceValues := .Values.service | default dict -}}
 {{- if $serviceValues.ports }}
-{{- if .Values.service.ports.http }}
-{{- .Values.service.ports.http }}
-{{- else }}
-{{- values .Values.service.ports | first }}
+{{- with (index $serviceValues.ports 0) }}
+{{- .port }}
 {{- end }}
 {{- else if .Values.containerPorts }}
 {{- if .Values.containerPorts.http }}
