@@ -27,14 +27,26 @@ Create chart name and version as used by the chart label.
 {{- end }}
 
 {{/*
-Common labels
+labels
 */}}
 {{- define "base.labels" -}}
-{{- include "base.selectorLabels" . }}
-app.kubernetes.io/name: {{ include "base.name" . }}
+{{- $commonValues := include "base.commonLabels" . | trim | fromYaml -}}
+{{- $selectorLabels := include "base.selectorLabels" . | trim | fromYaml -}}
+{{- $allLabels := mustMerge $selectorLabels $commonValues -}}
+{{- range $key, $value := $allLabels }}
+{{ $key }}: {{ $value | quote }}
+{{- end }}
+{{- end }}
+{{/*
+Common labels
+*/}}
+{{- define "base.commonLabels" -}}
 helm.sh/chart: {{ include "base.chart" . }}
+app.kubernetes.io/name: {{ include "base.name" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- else }}
+app.kubernetes.io/version: {{ .Values.image.tag | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
@@ -44,10 +56,10 @@ Selector labels
 */}}
 {{- define "base.selectorLabels" -}}
 {{- if .Values.selectorLabels }}
-{{- range $key, $value := .Values.selectorLabels -}}
+{{- range $key, $value := .Values.selectorLabels }}
 {{ $key }}: {{ $value | quote }}
 {{- end }}
-{{- else -}}
+{{- else }}
 app: {{ include "base.fullname" . }}
 {{- end }}
 {{- end }}

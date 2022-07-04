@@ -14,7 +14,7 @@ kind: Service
 metadata:
   name: {{ $serviceName }}
   labels:
-    {{- include "base.labels" $root | nindent 4 }}
+    {{- include "base.labels" $root | trim | nindent 4 }}
   {{- with $serviceValues.labels }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
@@ -60,7 +60,7 @@ spec:
   {{- end }}
   {{- end }}
   selector:
-    {{- include "base.selectorLabels" $root | nindent 4 }}
+    {{- include "base.selectorLabels" $root | trim | nindent 4 }}
   {{- end }}
 {{- end }}
 {{- end }}

@@ -58,7 +58,7 @@ affinity:
     {{- range $key, $value := $podAntiAffinity.topology }}
     - labelSelector:
         matchExpressions:
-        {{- range $key, $value := $deploymentValues | include "base.selectorLabels" | toString | fromYaml }}
+        {{- range $key, $value := $deploymentValues | include "base.selectorLabels" | trim | toString | fromYaml }}
         - key: {{ $key }}
           operator: In
           values:
@@ -73,7 +73,7 @@ affinity:
       podAffinityTerm:
         labelSelector:
           matchExpressions:
-          {{- range $key, $value := $deploymentValues | include "base.selectorLabels" | toString | fromYaml }}
+          {{- range $key, $value := $deploymentValues | include "base.selectorLabels" | trim | toString | fromYaml }}
           - key: {{ $key }}
             operator: In
             values:

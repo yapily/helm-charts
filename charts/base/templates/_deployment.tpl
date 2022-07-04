@@ -11,7 +11,7 @@ kind: {{ $deploymentValues.Values.kind | default "Deployment" }}
 metadata:
   name: {{ include "base.fullname" $deploymentValues }}
   labels:
-    {{- include "base.labels" $deploymentValues | nindent 4 }}
+    {{- include "base.labels" $deploymentValues | trim | nindent 4 }}
     {{- with $deploymentValues.Values.labelsDeployment }}
     {{- toYaml . | nindent 4 }}
     {{- end }}
@@ -44,7 +44,7 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "base.selectorLabels" $deploymentValues | nindent 6 }}
+      {{- include "base.selectorLabels" $deploymentValues | trim | nindent 6 }}
   template:
     metadata:
       {{- if or $deploymentValues.Values.prometheusScrape $deploymentValues.Values.podAnnotations }}
@@ -57,7 +57,7 @@ spec:
         {{- include "base.valuesPairs" $deploymentValues.Values.podAnnotations | trim | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "base.selectorLabels" $deploymentValues | nindent 8 }}
+        {{- include "base.selectorLabels" $deploymentValues | trim | nindent 8 }}
     spec:
       {{- with include "base.podDefaultProperties" $deploymentValues }}
       {{- . | trim | nindent 6 }}

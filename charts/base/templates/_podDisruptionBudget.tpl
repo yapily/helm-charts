@@ -19,6 +19,6 @@ spec:
   {{- end }}
   selector:
     matchLabels:
-      {{- include "base.selectorLabels" . | nindent 6 }}
+      {{- include "base.selectorLabels" . | trim | nindent 6 }}
 {{- end }}
 {{- end }}
