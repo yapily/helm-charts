@@ -67,11 +67,9 @@ spec:
         {{- range $containerName, $containerValues := $deploymentValues.Values.initContainers }}
         - name: {{ $containerName }}
           {{- include "base.image" (merge dict $containerValues.image $deploymentValues.Values.image) | nindent 10 }}
-          {{- range $key, $value := $containerValues.containerPorts }}
+          {{- with $containerValues.ports }}
           ports:
-            - name: {{ $key | quote }}
-              containerPort: {{ $value }}
-              protocol: TCP
+            {{- . | trim | nindent 12 }}
           {{- end }}
           {{- with include "base.containerDefaultProperties" $containerValues }}
           {{- . | trim | nindent 10 }}
@@ -82,13 +80,9 @@ spec:
         {{- range $containerName, $containerValues := $deploymentValues.Values.extraContainers }}
         - name: {{ $containerName }}
           {{- include "base.image" (merge dict $containerValues.image $deploymentValues.Values.image) | nindent 10 }}
-          {{- if $containerValues.containerPorts }}
+          {{- with $containerValues.ports }}
           ports:
-            {{- range $key, $value := $containerValues.containerPorts }}
-            - name: {{ $key | quote }}
-              containerPort: {{ $value }}
-              protocol: TCP
-            {{- end }}
+            {{- . | trim | nindent 12 }}
           {{- end }}
           {{- with include "base.containerDefaultProperties" $containerValues }}
           {{- . | trim | nindent 10 }}
@@ -96,21 +90,9 @@ spec:
         {{- end }}
         - name: {{ include "base.name" $deploymentValues }}
           {{- include "base.image" $deploymentValues.Values.image | nindent 10 }}
-          {{- if $deploymentValues.Values.containerPorts }}
+          {{- with $deploymentValues.Values.ports }}
           ports:
-            {{- range $key, $value := $deploymentValues.Values.containerPorts }}
-            - name: {{ $key | quote }}
-              containerPort: {{ $value }}
-              protocol: TCP
-            {{- end }}
-          {{- else if $deploymentValues.Values.service.ports }}
-          ports:
-            {{- range $deploymentValues.Values.service.ports }}
-            - name: {{ .name | default "http" }}
-              containerPort: {{ .targetPort | default .port }}
-              protocol: {{ .protocol | default "TCP" }}
-              name: {{ .name | default "http" }}
-            {{- end }}
+            {{- toYaml . | nindent 12 }}
           {{- end }}
           {{- with include "base.containerDefaultProperties" $deploymentValues.Values }}
           {{- . | trim | nindent 10 }}

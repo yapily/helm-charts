@@ -67,37 +67,15 @@ app: {{ include "base.fullname" . }}
 {{/*
 service port default
 */}}
-{{- define "base.servicePortDefault" -}}
-{{- $serviceValues := .Values.service | default dict -}}
-{{- if $serviceValues.ports }}
-{{- with (index $serviceValues.ports 0) }}
-{{- .name | default "http" }}
-{{- end }}
-{{- else if .Values.containerPorts }}
-{{- if .Values.containerPorts.http }}
-{{- printf "http" }}
-{{- else }}
-{{- keys .Values.containerPorts | first }}
-{{- end }}
-{{- else }}
-{{- printf "http" }}
-{{- end }}
-{{- end }}
-
-{{/*
-service port default
-*/}}
 {{- define "base.servicePortDefaultNum" -}}
 {{- $serviceValues := .Values.service | default dict -}}
 {{- if $serviceValues.ports }}
 {{- with (index $serviceValues.ports 0) }}
 {{- .port }}
 {{- end }}
-{{- else if .Values.containerPorts }}
-{{- if .Values.containerPorts.http }}
-{{- .Values.containerPorts.http }}
-{{- else }}
-{{- values .Values.containerPorts | first }}
+{{- else if .Values.ports }}
+{{- with (index .Values.ports 0) }}
+{{- .containerPort }}
 {{- end }}
 {{- else }}
 {{- printf "80" }}

@@ -25,9 +25,9 @@ service:
     # - port: 8080
     #   targetPort: 9090 # default .port
     #   protocol: "" # default "TCP"
-    #   name: net # default "http"
+    #   name: net # default "http-Index"
     #   nodePort: # not needed
-  ## if ports not defined, then containerPorts will be used.
+  ## if ports not defined, then .Values.ports will be used.
   ##
   ## https://kubernetes.io/docs/concepts/services-networking/service/#externalname
   # externalName: my.database.example.com

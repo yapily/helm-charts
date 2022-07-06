@@ -74,22 +74,33 @@ service:
   # clusterIP: ""
   # externalTrafficPolicy: Cluster
   ##
-  # ports:
+  ports: []
     # - port: 8080
     #   targetPort: 9090 # default .port
     #   protocol: "" # default "TCP"
     #   name: net # default "http"
     #   nodePort: # not needed
-  ## if ports not defined, then containerPorts will be used. If none defined, then http: 80
+    # - port: 9090
+  ## if ports not defined, then .Values.ports will be used. If none defined, then http: 80
   ##
   ## https://kubernetes.io/docs/concepts/services-networking/service/#externalname
   # externalName: my.database.example.com
   ##
   # sessionAffinity: "ClientIP"
 
-## by default container Ports in deployment will be taken from Values.service.ports, use containerPorts to override
-# containerPorts:
-#   http: 8080
+## for extra services
+# extraServices:
+#   servicetwo:
+#     ports:
+#       - port: 8090
+#         targetPort: 9090
+
+## ports for default container
+ports: []
+#   - containerPort: 8080
+#     name: http
+#     protocol: TCP
+#   - containerPort: 9090
 
 resources: {}
   # limits:
@@ -336,7 +347,7 @@ ingress:
     # - host: chart-example.local
     ## by default serviceName will be taken from Release Name or Values.fullnameOverride , to override add:
     #   serviceName: service_name
-    ## by default servicePort will be taken from Values.service.ports (http or first in the list), otherwise from containerPorts, to override add:
+    ## by default servicePort will be taken from Values.service.ports (http or first in the list), otherwise from .Values.ports, to override add:
     #   servicePort: 8080
     # - host: chart-example-2.local
     #   resource:

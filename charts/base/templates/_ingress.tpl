@@ -1,7 +1,7 @@
 {{- define "base.ingress" -}}
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "base.fullname" . -}}
-{{- $svcPort := include "base.servicePortDefault" . -}}
+{{- $svcPort := include "base.servicePortDefaultNum" . -}}
 {{- $serviceValues := .Values.service | default dict -}}
 {{- $svcName := $serviceValues.name | default $fullName -}}
 ---
@@ -92,7 +92,7 @@ spec:
                   name: {{ $hostValues.servicePort }}
                   {{- end }}
                   {{- else }}
-                  name: {{ $svcPort }}
+                  number: {{ $svcPort }}
                   {{- end }}
                 {{- end }}
           {{- end }}

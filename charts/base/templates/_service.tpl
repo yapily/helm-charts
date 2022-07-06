@@ -42,21 +42,21 @@ spec:
   type: {{ $serviceValues.type | default "ClusterIP" }}
   ports:
   {{- if $serviceValues.ports }}
-  {{- range $serviceValues.ports }}
-    - port: {{ .port }}
-      targetPort: {{ .targetPort | default .port }}
-      protocol: {{ .protocol | default "TCP" }}
-      name: {{ .name | default "http" }}
-      {{- if .nodePort }}
-      nodePort: {{ .nodePort }}
+  {{- range $i, $a := $serviceValues.ports }}
+    - port: {{ $a.port }}
+      targetPort: {{ $a.targetPort | default $a.port }}
+      protocol: {{ $a.protocol | default "TCP" }}
+      name: {{ $a.name | default (printf "http-%s" (toString $i))  }}
+      {{- if $a.nodePort }}
+      nodePort: {{ $a.nodePort }}
       {{- end }}
   {{- end }}
-  {{- else if $root.Values.containerPorts }}
-  {{- range $key, $value := $root.Values.containerPorts }}
-    - port: {{ $value }}
-      targetPort: {{ $key | quote }}
-      protocol: TCP
-      name: {{ $key | quote }}
+  {{- else if $root.Values.ports }}
+  {{- range $i, $a := $root.Values.ports }}
+    - port: {{ $a.containerPort }}
+      targetPort: {{ $a.containerPort }}
+      protocol: {{ $a.protocol | default "TCP" }}
+      name: {{ $a.name | default (printf "http-%s" (toString $i))  }}
   {{- end }}
   {{- end }}
   selector:

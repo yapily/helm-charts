@@ -10,5 +10,4 @@
 {{ include "base.rbac" . }}
 {{ include "base.deployment" . }}
 {{ include "base.argoRollouts" . }}
-{{ include "base.flagger" . }}
 {{ include "base.analysisTemplate" . }}
