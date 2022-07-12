@@ -7,20 +7,29 @@ replicas: 1
 image:
   ## has to be passed
   # repository: ""
-  ## default pullPolicy is IfNotPresent, and if tag doesn't have a number(int) in it, then forced to Always
-  pullPolicy: IfNotPresent
+  ## default imagePullPolicy is IfNotPresent, and if tag doesn't have a number(int) in it, then switched to Always
+  # pullPolicy: IfNotPresent
   ## default tag, pipeline should add latest tag when pushing to production
   ## tag will be passed automatically through pipeline
   tag: "latest"
 
 ## secret name for dockerconfigjson secret
-# imagePullSecrets: ""
+# imagePullSecrets:
+#   - name: image-pull-secret
 
 ## you can override the name of your deployment, which will manifest in naming conventions of deployment
 # fullnameOverride: ""
 
 ## you can override the name of your main container
 # nameOverride: ""
+
+## main labels (overrides default helm labels)
+# labels:
+#   key: value
+
+## pod level labels
+# podLabels:
+#   key: value
 
 ## override main selector labels
 # selectorLabels:
@@ -30,15 +39,19 @@ image:
 # labelsDeployment:
 #   key: value
 
+## annotation: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+annotations: {}
+
 ## add extra annotations to pod metadata
-# podAnnotations: {}
+podAnnotations: {}
 
 ## default update strategy if HorizontalPodAutoscaler (autoscaling) is not enabled
+## .Values.argo.rollouts.strategy will take priority
 ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
-strategy:
-  type: RollingUpdate
-  rollingUpdate:
-    maxUnavailable: 0
+strategy: {}
+  # type: RollingUpdate
+  # rollingUpdate:
+  #   maxUnavailable: 0
 
 ## define security context at pod level
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
@@ -135,9 +148,6 @@ resources: {}
 # serviceAccountName: sa-name
 
 ## https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#use-the-default-service-account-to-access-the-api-server
-# automountServiceAccountToken:
-#   enabled: false
-## will result in:
 ## automountServiceAccountToken: false
 
 ## quick extra annotations for prometheus scrape config
@@ -226,10 +236,7 @@ verticalPodAutoscaler:
   enabled: false
   updateMode: "Off"
 
-# nodeSelector: {}
-
-# if no nodeSelector defined (in case there is a default nodeSelector needed for all apps)
-# nodeSelectorDefault: {}
+nodeSelector: {}
 
 tolerations: []
 
@@ -292,21 +299,24 @@ lifecycle: {}
 #     NODE_ENV: "staging"
 #   secretVariables:
 #     VAR_NAME_IN_CONTAINER:
-#       secretName: secret_name
-#       dataKeyRef: SECRET_KEY_REFERENCE_NAME
+#       name: secret_name
+#       key: SECRET_KEY_REFERENCE_NAME
 #   configmapVariables:
 #     VAR_NAME_IN_CONTAINER:
-#       configmapName: configmap_name
-#       dataKeyRef: CONFIGMAP_KEY_REFERENCE_NAME
+#       name: configmap_name
+#       key: CONFIGMAP_KEY_REFERENCE_NAME
 #     VAR_NAME_IN_CONTAINER_2:
-#       configmapName: configmap_name
-#       dataKeyRef: CONFIGMAP_KEY_REFERENCE_NAME_2
+#       name: configmap_name
+#       key: CONFIGMAP_KEY_REFERENCE_NAME_2
 ## with metadata you can get info, lipe pod name, namespace, ip intot he variable. ref: https://kubernetes.io/docs/tasks/inject-data-application/environment-variable-expose-pod-information/
 #   metadata:
 #     POD_NAME: metadata.name
 ## load env vars from configmap
 #   envFromConfigMaps:
 #     - shared-config
+## load env vars from secrets
+#   envFromSecrets:
+#     - shared-secret
 
 ## to add volume mounts entries (follow https://kubernetes.io/docs/concepts/storage/volumes/ for syntax)
 # volumes:
@@ -315,9 +325,9 @@ lifecycle: {}
 #     defaultMode: 420
 #     secretName: secret-name
 # volumes:
-#   - name: sa-firebase-labelling-tool
+#   - name: volume-name
 #     secret:
-#       secretName: sa-firebase-labelling-tool
+#       secretName: volume-name
 #       items:
 #       - key: service.json
 #         path: service.json
@@ -325,7 +335,7 @@ lifecycle: {}
 # volumeMounts:
 #   - mountPath: /src/service.json
 #       subPath: service.json
-#     name: sa-firebase-labelling-tool
+#     name: volume-name
 #     readOnly: true
 
 ## ingress configuration

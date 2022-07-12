@@ -54,9 +54,14 @@ spec:
         prometheus.io/port: {{ $deploymentValues.Values.prometheusScrapePort | quote }}
         prometheus.io/scrape: "true"
         {{- end }}
+        {{- if $deploymentValues.Values.podAnnotations }}
         {{- include "base.valuesPairs" $deploymentValues.Values.podAnnotations | trim | nindent 8 }}
+        {{- end }}
       {{- end }}
       labels:
+        {{- with $deploymentValues.Values.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         {{- include "base.selectorLabels" $deploymentValues | trim | nindent 8 }}
     spec:
       {{- with include "base.podDefaultProperties" $deploymentValues }}

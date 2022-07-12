@@ -37,18 +37,26 @@ labels
 {{ $key }}: {{ $value | quote }}
 {{- end }}
 {{- end }}
+
 {{/*
 Common labels
 */}}
 {{- define "base.commonLabels" -}}
+{{- if .Values.labels }}
+{{- range $key, $value := .Values.labels }}
+{{ $key }}: {{ $value | quote }}
+{{- end }}
+{{- else }}
 helm.sh/chart: {{ include "base.chart" . }}
 app.kubernetes.io/name: {{ include "base.name" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- else }}
 app.kubernetes.io/version: {{ .Values.image.tag | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
 {{- end }}
 
 {{/*

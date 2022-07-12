@@ -15,9 +15,9 @@ metadata:
   name: {{ $serviceName }}
   labels:
     {{- include "base.labels" $root | trim | nindent 4 }}
-  {{- with $serviceValues.labels }}
+    {{- with $serviceValues.labels }}
     {{- toYaml . | nindent 4 }}
-  {{- end }}
+    {{- end }}
   {{- with $serviceValues.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}

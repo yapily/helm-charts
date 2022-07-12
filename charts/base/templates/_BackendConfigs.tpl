@@ -6,6 +6,8 @@ apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
   name: {{ .name }}
+  labels:
+    {{- include "base.labels" . | trim | nindent 4 }}
 spec:
 {{- if .iap }}
   iap:

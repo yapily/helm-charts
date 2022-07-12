@@ -13,6 +13,8 @@ metadata:
   {{- if . }}
   namespace: {{ . | quote }}
   {{- end }}
+  labels:
+    {{- include "base.commonLabels" . | trim | nindent 4 }}
   {{- if $configValuesList.annotations }}
   annotations:
     {{- include "base.valuesPairs" $configValuesList.annotations | trim | nindent 4 }}
