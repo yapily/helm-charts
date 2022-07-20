@@ -8,7 +8,7 @@ kind: PriorityClass
 metadata:
   name: {{ .name | default (include "base.fullname" $root) }}
   labels:
-    {{- include "base.commonLabels" . | trim | nindent 4 }}
+    {{- include "base.commonLabels" $root | trim | nindent 4 }}
 value: {{ .value }}
 preemptionPolicy: {{ .preemptionPolicy | default "PreemptLowerPriority" }}
 globalDefault: {{ .globalDefault | default "false" }}

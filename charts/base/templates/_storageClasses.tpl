@@ -1,5 +1,6 @@
 {{- define "base.storageClasses" -}}
 {{- if .Values.storageClasses }}
+{{- $root := . -}}
 {{- range .Values.storageClasses }}
 ---
 apiVersion: storage.k8s.io/v1
@@ -7,7 +8,7 @@ kind: StorageClass
 metadata:
   name: {{ .name }}
   labels:
-    {{- include "base.commonLabels" . | trim | nindent 4 }}
+    {{- include "base.commonLabels" $root | trim | nindent 4 }}
 {{- with .parameters }}
 parameters:
   {{- toYaml . | nindent 2 }}

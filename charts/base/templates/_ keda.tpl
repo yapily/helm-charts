@@ -1,6 +1,5 @@
 {{- define "base.keda" -}}
 {{- if .Values.keda.enabled }}
-{{- $root := . -}}
 ---
 apiVersion: keda.sh/v1alpha1
 kind: ScaledObject

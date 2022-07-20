@@ -127,6 +127,7 @@ rules:
 {{- end }}
 
 {{- if .Values.RoleBinding -}}
+{{- $root := . -}}
 {{- range .Values.RoleBinding }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1

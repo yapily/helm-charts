@@ -1,5 +1,6 @@
 {{- define "base.secrets" -}}
 {{- if .Values.secrets }}
+{{- $root := . -}}
 {{- $defaultNamespaces := .Values.defaultNamespaces }}
 {{- range $encodeMode, $secretValuesList := .Values.secrets }}
 {{- range $secretValuesList }}
@@ -17,7 +18,7 @@ metadata:
   namespace: {{ . | quote }}
   {{- end }}
   labels:
-    {{- include "base.commonLabels" . | trim | nindent 4 }}
+    {{- include "base.commonLabels" $root | trim | nindent 4 }}
 data:
 {{- range $key, $value := $secretValues.values }}
   {{- if eq $encodeMode "decoded" }}
