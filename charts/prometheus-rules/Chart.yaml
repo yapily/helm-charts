@@ -1,0 +1,18 @@
+apiVersion: v2
+name: prometheus-rules
+description: A Helm chart for Prometheus Rules
+type: application
+
+version: 0.9.1
+
+keywords:
+  - job
+
+maintainers:
+  - name: juri
+    url: https://github.com/juriku/helm-charts
+
+dependencies:
+  - name: base
+    version: ~0
+    repository: file://../base
