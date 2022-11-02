@@ -7,6 +7,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: {{ .name }}
+  {{- if .namespace }}
+  namespace: {{ .namespace }}
+  {{- end }}
   labels:
     {{- include "base.commonLabels" $root | trim | nindent 4 }}
 spec:
