@@ -1591,6 +1591,30 @@ entries:
     version: 0.1.0
   base:
   - apiVersion: v2
+    created: "2022-11-02T14:34:31.919464673Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 3ee203db41be8bbfa711b8ed8f3463259a6af212da150d4b0a6ffd6199a6c901
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    - pvc
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.9.10/base-0.9.10.tgz
+    version: 0.9.10
+  - apiVersion: v2
     created: "2022-11-02T13:05:27.701668708Z"
     description: A Helm chart for Kubernetes with helm named templates
     digest: 0973c15317d19a1a919a29992a58f63542f5373b9d77027caee15e7fd5262c31
@@ -3348,6 +3372,30 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/cronjob-0.2.1/cronjob-0.2.1.tgz
     version: 0.2.1
   default-base:
+  - apiVersion: v2
+    created: "2022-11-02T14:34:32.068677628Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes - default-base for namespaces
+    digest: fe4c3542ba09e1d120e2e09a9d389b3f45e661c24aa12c944744cae091a120b4
+    keywords:
+    - BackendConfig
+    - StorageClass
+    - pvc
+    - configmap
+    - secret
+    - tls
+    - dockerconfigjson
+    - rbac
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: default-base
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/default-base-0.9.10/default-base-0.9.10.tgz
+    version: 0.9.10
   - apiVersion: v2
     created: "2022-11-02T13:05:27.838404387Z"
     dependencies:
@@ -5258,4 +5306,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2022-11-02T13:05:27.840768404Z"
+generated: "2022-11-02T14:34:32.069990324Z"
