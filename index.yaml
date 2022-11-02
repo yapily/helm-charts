@@ -1591,6 +1591,30 @@ entries:
     version: 0.1.0
   base:
   - apiVersion: v2
+    created: "2022-11-02T13:05:27.701668708Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 0973c15317d19a1a919a29992a58f63542f5373b9d77027caee15e7fd5262c31
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    - pvc
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.9.9/base-0.9.9.tgz
+    version: 0.9.9
+  - apiVersion: v2
     created: "2022-11-02T12:53:15.537238168Z"
     description: A Helm chart for Kubernetes with helm named templates
     digest: db7b575cf8324744cf919cd619854c007989d84f2ccce3f69798fc5f9953c22f
@@ -3324,6 +3348,30 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/cronjob-0.2.1/cronjob-0.2.1.tgz
     version: 0.2.1
   default-base:
+  - apiVersion: v2
+    created: "2022-11-02T13:05:27.838404387Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes - default-base for namespaces
+    digest: b3a79630ab75347337a20659f0c82f33d044fb89449d4b091079b2ca6f9a4fbe
+    keywords:
+    - BackendConfig
+    - StorageClass
+    - pvc
+    - configmap
+    - secret
+    - tls
+    - dockerconfigjson
+    - rbac
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: default-base
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/default-base-0.9.9/default-base-0.9.9.tgz
+    version: 0.9.9
   - apiVersion: v2
     created: "2022-11-02T12:53:15.909589318Z"
     dependencies:
@@ -5210,4 +5258,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2022-11-02T12:53:16.656734511Z"
+generated: "2022-11-02T13:05:27.840768404Z"
