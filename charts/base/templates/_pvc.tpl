@@ -33,4 +33,20 @@ spec:
   {{- end }}
 {{- end }}
 {{- end }}
+{{- if .Values.persistentVolumes }}
+{{- $root := . -}}
+{{- range .Values.persistentVolumes }}
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ .name }}
+  labels:
+    {{- include "base.commonLabels" $root | trim | nindent 4 }}
+{{- with .spec }}
+spec:
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end }}
+{{- end }}
 {{- end }}
