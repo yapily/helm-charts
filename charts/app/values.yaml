@@ -459,11 +459,11 @@ argo:
 
 # ClusterRoleBinding:
 #   - name: clusterrolebinding-cluster-admin
-#     groups:
+#     UserLists:
 #       - admins
 #     ClusterRoleName: cluster-admin
 #   - name: clusterrolebinding-edit
-#     groups:
+#     UserLists:
 #       - devops
 #     ClusterRoleName: edit
 #   - name: clusterrolebinding-view
@@ -478,7 +478,7 @@ argo:
 #       - engineer
 #     ClusterRoleName: edit
 
-# Groups:
+# RbacUserLists:
 #   devops:
 #     - user@mail.com
 

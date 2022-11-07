@@ -43,17 +43,22 @@ metadata:
   {{- end }}
   name: {{ .name }}
 subjects:
-{{- if .groups -}}
-{{- range .groups }}
-{{- $valueRange := pluck . $root.Values.Groups | first }}
+{{- range .UserLists }}
+{{- $valueRange := pluck . $root.Values.RbacUserLists | first }}
 {{- range $valueRange }}
 - kind: User
   name: {{ . | trim | quote }}
   apiGroup: rbac.authorization.k8s.io
 {{- end }}
 {{- end }}
+{{- range .GroupLists }}
+{{- $valueRange := pluck . $root.Values.RbacGroupLists | first }}
+{{- range $valueRange }}
+- kind: Group
+  name: {{ . | trim | quote }}
+  apiGroup: rbac.authorization.k8s.io
 {{- end }}
-{{- if .serviceAccountGroups -}}
+{{- end }}
 {{- range .serviceAccountGroups }}
 {{- $valueRange := pluck . $root.Values.serviceAccountGroups | first }}
 {{- range $valueRange }}
@@ -64,13 +69,10 @@ subjects:
   {{- end }}
 {{- end }}
 {{- end }}
-{{- end }}
-{{- if .kubeGroups -}}
 {{- range .kubeGroups }}
 - kind: Group
   name: {{ . | trim | quote }}
   apiGroup: rbac.authorization.k8s.io
-{{- end }}
 {{- end }}
 roleRef:
   kind: ClusterRole
@@ -129,10 +131,18 @@ metadata:
   namespace: {{ . | quote }}
   {{- end }}
 subjects:
-{{- range $coreRange.groups }}
-{{- $valueRange := pluck . $root.Values.Groups | first }}
+{{- range $coreRange.UserLists }}
+{{- $valueRange := pluck . $root.Values.RbacUserLists | first }}
 {{- range $valueRange }}
 - kind: User
+  name: {{ . | trim | quote }}
+  apiGroup: rbac.authorization.k8s.io
+{{- end }}
+{{- end }}
+{{- range $coreRange.GroupLists }}
+{{- $valueRange := pluck . $root.Values.RbacGroupLists | first }}
+{{- range $valueRange }}
+- kind: Group
   name: {{ . | trim | quote }}
   apiGroup: rbac.authorization.k8s.io
 {{- end }}
