@@ -1,20 +1,24 @@
 # ClusterRoleBinding:
-#   - name: yapily-clusterrolebinding-cluster-admin
+#   - name: clusterrolebinding-cluster-admin
 #     groups:
 #       - admins
 #     ClusterRoleName: cluster-admin
-#   - name: yapily-clusterrolebinding-edit
+#   - name: clusterrolebinding-edit
 #     groups:
 #       - devops
 #     ClusterRoleName: edit
-#   - name: yapily-clusterrolebinding-view
+#   - name: clusterrolebinding-view
 #     kubeGroups:
 #       - system:authenticated
 #     ClusterRoleName: view
 
 # RoleBinding:
-#   - name: yapily-rolebinding-default-edit
+#   - name: rolebinding-default-edit
 #     namespace: default
 #     groups:
 #       - engineer
 #     ClusterRoleName: edit
+
+# Groups:
+#   devops:
+#     - user@mail.com
