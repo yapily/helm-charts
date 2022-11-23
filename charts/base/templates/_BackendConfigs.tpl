@@ -48,7 +48,6 @@ metadata:
     {{- include "base.labels" $root | trim | nindent 4 }}
 spec:
 {{- with .spec }}
-imagePullSecrets:
 {{ toYaml . | indent 2 }}
 {{- end }}
 {{- end }}
