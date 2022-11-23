@@ -36,4 +36,21 @@ spec:
 {{- end }}
 {{- end }}
 {{- end }}
+{{- if .Values.frontendConfigs }}
+{{- $root := . -}}
+{{- range .Values.frontendConfigs }}
+---
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+  name: {{ .name }}
+  labels:
+    {{- include "base.labels" $root | trim | nindent 4 }}
+spec:
+{{- with .spec }}
+imagePullSecrets:
+{{ toYaml . | indent 2 }}
+{{- end }}
+{{- end }}
+{{- end }}
 {{- end }}
