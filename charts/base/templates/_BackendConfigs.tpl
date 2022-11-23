@@ -10,6 +10,9 @@ metadata:
   labels:
     {{- include "base.labels" $root | trim | nindent 4 }}
 spec:
+{{- with .spec }}
+{{ toYaml . | indent 2 }}
+{{- end }}
 {{- if .iap }}
   iap:
     enabled: {{ .iap.enabled | default "true" }}
