@@ -1619,6 +1619,30 @@ entries:
     version: 0.1.0
   base:
   - apiVersion: v2
+    created: "2022-12-15T12:46:00.010038429Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 2774d4478c6868d0e2edeab4d4ce1a59c600cb9b1014f8da8e8ed54b1235b9fe
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    - pvc
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.10.7/base-0.10.7.tgz
+    version: 0.10.7
+  - apiVersion: v2
     created: "2022-12-08T08:15:45.168931783Z"
     description: A Helm chart for Kubernetes with helm named templates
     digest: a07e3ee238529cb9688e5f97c723d59a7c86290ab3432ea99cb389318f5db636
@@ -3100,6 +3124,24 @@ entries:
     version: 0.2.0
   cronjob:
   - apiVersion: v2
+    created: "2022-12-15T12:46:00.186149922Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes cronjob
+    digest: 817d99871fa1cdca8d715de38e83ea4d124155901d50e66820dad0dbdc7a1983
+    keywords:
+    - cronjob
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: cronjob
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/cronjob-0.10.7/cronjob-0.10.7.tgz
+    version: 0.10.7
+  - apiVersion: v2
     created: "2022-12-08T08:15:45.399427852Z"
     dependencies:
     - name: base
@@ -4516,6 +4558,24 @@ entries:
     version: 0.2.1
   job:
   - apiVersion: v2
+    created: "2022-12-15T12:46:00.360579793Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes job
+    digest: e3d6fe0df96e6e5b3ac7571c9afef7d6ff3a9f5a741630d7cdc715999c7bd6d6
+    keywords:
+    - job
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: job
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/job-0.10.7/job-0.10.7.tgz
+    version: 0.10.7
+  - apiVersion: v2
     created: "2022-11-02T12:53:16.277712106Z"
     dependencies:
     - name: base
@@ -5559,4 +5619,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2022-12-08T08:15:45.401374263Z"
+generated: "2022-12-15T12:46:00.362451318Z"
