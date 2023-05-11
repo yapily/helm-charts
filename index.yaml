@@ -2,6 +2,34 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2023-05-11T15:42:54.095968043Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes Deployment
+    digest: e3499b2e7d7703e6819072b53296f848dcde3c7accbc91d0f9ba8800f23ec7f1
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - analysisTemplate
+    - rbac
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.10.9/app-0.10.9.tgz
+    version: 0.10.9
+  - apiVersion: v2
     created: "2022-11-07T23:01:09.766705996Z"
     dependencies:
     - name: base
@@ -5739,4 +5767,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2023-04-26T14:04:38.185371874Z"
+generated: "2023-05-11T15:42:54.098161255Z"
