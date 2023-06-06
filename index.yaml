@@ -2,6 +2,34 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2023-06-06T18:13:58.422468686Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes Deployment
+    digest: 72248c7a96ddc889a756377c9a7a2e7c8337b2750d893f1ce13c5e0a1a200763
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - analysisTemplate
+    - rbac
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.10.11/app-0.10.11.tgz
+    version: 0.10.11
+  - apiVersion: v2
     created: "2023-06-06T17:59:22.803020041Z"
     dependencies:
     - name: base
@@ -1674,6 +1702,30 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/argocd-workflows-0.1.0/argocd-workflows-0.1.0.tgz
     version: 0.1.0
   base:
+  - apiVersion: v2
+    created: "2023-06-06T18:13:58.584029724Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: abe82a294f1b6898fb07f50183bd9c3ce378edcfa36879dbeee1ba24edc06561
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    - pvc
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.10.11/base-0.10.11.tgz
+    version: 0.10.11
   - apiVersion: v2
     created: "2023-06-06T17:59:22.927453644Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -5819,4 +5871,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2023-06-06T17:59:22.929211368Z"
+generated: "2023-06-06T18:13:58.591450308Z"
