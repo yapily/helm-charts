@@ -32,7 +32,7 @@ spec:
   {{- range .Values.autoscaling.memory }}
     - type: Resource
       resource:
-        name: cpu
+        name: memory
         target:
           type: {{ .type | default "Utilization" | quote  }}
           averageUtilization: {{ .averageUtilization | default 50 }}
