@@ -256,7 +256,7 @@ define pod service account
 {{- define "base.serviceAccount" -}}
 serviceAccountName: {{ .serviceAccountName | default "default" }}
 {{- if hasKey . "automountServiceAccountToken" }}
-automountServiceAccountToken: {{ .automountServiceAccountToken | default "default" }}
+automountServiceAccountToken: {{ .automountServiceAccountToken }}
 {{- end }}
 {{- end }}
 
