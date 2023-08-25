@@ -484,3 +484,5 @@ argo:
 
 # ServiceAccount:
 #   - name: name
+
+# revisionHistoryLimit: 10
