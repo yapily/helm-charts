@@ -2,6 +2,34 @@ apiVersion: v1
 entries:
   app:
   - apiVersion: v2
+    created: "2023-08-25T13:37:10.909898847Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes Deployment
+    digest: ca93212c2c372be1381f5a8e71e24e25101234d9671adb6d149c81823931039d
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - analysisTemplate
+    - rbac
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: app
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/app-0.11.0/app-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
     created: "2023-06-06T18:13:58.422468686Z"
     dependencies:
     - name: base
@@ -1612,6 +1640,21 @@ entries:
     version: 0.3.6
   argo-applications:
   - apiVersion: v2
+    created: "2023-08-25T13:37:11.170174467Z"
+    description: A Helm chart for Kubernetes argo applications
+    digest: 3b7cac32773f9a6912145e0fb3f8f6d4ccac258bd0b6baeb4a2d0ad3fe5347e3
+    keywords:
+    - argocd
+    - workflows
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: argo-applications
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/argo-applications-0.11.0/argo-applications-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
     created: "2022-05-12T09:09:35.750710202Z"
     description: A Helm chart for Kubernetes argo applications
     digest: fa04368ef08b7cdfe900123ee4de234a74e2c99e30069cea7210ea11cf316e92
@@ -1665,6 +1708,25 @@ entries:
     version: 0.1.1
   argo-workflows:
   - apiVersion: v2
+    created: "2023-08-25T13:37:11.405659351Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes argocd workflows
+    digest: 6f2f4fee9bb5e8673b4452d9bd71bfac6181d422b50b176672e008e185356178
+    keywords:
+    - argocd
+    - workflows
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: argo-workflows
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/argo-workflows-0.11.0/argo-workflows-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
     created: "2021-08-11T10:54:33.27884558Z"
     dependencies:
     - name: base
@@ -1702,6 +1764,30 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/argocd-workflows-0.1.0/argocd-workflows-0.1.0.tgz
     version: 0.1.0
   base:
+  - apiVersion: v2
+    created: "2023-08-25T13:37:11.644661325Z"
+    description: A Helm chart for Kubernetes with helm named templates
+    digest: 35c68e1248eb72ce78bac964ada7a1d802b6fde826b4f9927b6dae26e2c06bd9
+    keywords:
+    - deployment
+    - configmap
+    - secret
+    - HorizontalPodAutoscaler
+    - hpa
+    - VerticalPodAutoscaler
+    - podDisruptionBudget
+    - service
+    - ingress
+    - storageClass
+    - pvc
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: base
+    type: library
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/base-0.11.0/base-0.11.0.tgz
+    version: 0.11.0
   - apiVersion: v2
     created: "2023-06-06T18:13:58.584029724Z"
     description: A Helm chart for Kubernetes with helm named templates
@@ -3304,6 +3390,24 @@ entries:
     version: 0.2.0
   cronjob:
   - apiVersion: v2
+    created: "2023-08-25T13:37:11.884414539Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes cronjob
+    digest: 87f6b52478e82506268bdf4397e674b4347fdc5c5fe0aa654a99fe3718f89224
+    keywords:
+    - cronjob
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: cronjob
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/cronjob-0.11.0/cronjob-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
     created: "2023-04-26T14:04:38.016576913Z"
     dependencies:
     - name: base
@@ -3796,6 +3900,30 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/cronjob-0.2.1/cronjob-0.2.1.tgz
     version: 0.2.1
   default-base:
+  - apiVersion: v2
+    created: "2023-08-25T13:37:12.099622131Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes - default-base for namespaces
+    digest: 6cdec598d56bdba1d4b20d01d47bcb16eae6700fe5c0ed8729c4c30964b6797b
+    keywords:
+    - BackendConfig
+    - StorageClass
+    - pvc
+    - configmap
+    - secret
+    - tls
+    - dockerconfigjson
+    - rbac
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: default-base
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/default-base-0.11.0/default-base-0.11.0.tgz
+    version: 0.11.0
   - apiVersion: v2
     created: "2022-11-23T15:32:50.278850537Z"
     dependencies:
@@ -4337,6 +4465,24 @@ entries:
     version: 0.3.1
   ingress:
   - apiVersion: v2
+    created: "2023-08-25T13:37:12.337176626Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes ingress
+    digest: d9bbdd334b6fce0116cbab67b29866f7c75f33973fcb1f01fc95f7520d83179d
+    keywords:
+    - ingress
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: ingress
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/ingress-0.11.0/ingress-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
     created: "2022-11-02T12:53:16.088947082Z"
     dependencies:
     - name: base
@@ -4773,6 +4919,24 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/ingress-0.2.1/ingress-0.2.1.tgz
     version: 0.2.1
   job:
+  - apiVersion: v2
+    created: "2023-08-25T13:37:12.537796933Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes job
+    digest: 711657fb0c74bedd45d525c363463315a804c0936db616c76c51e98ba1df4cf2
+    keywords:
+    - job
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: job
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/job-0.11.0/job-0.11.0.tgz
+    version: 0.11.0
   - apiVersion: v2
     created: "2023-04-26T14:04:38.183667928Z"
     dependencies:
@@ -5232,6 +5396,24 @@ entries:
     version: 0.2.1
   prometheus-rules:
   - apiVersion: v2
+    created: "2023-08-25T13:37:12.769340505Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Prometheus Rules
+    digest: 1bab3e5a8fa12ef55b6db0586f7c6909b267ccf2fc01ce91751ddcd5fec2eea4
+    keywords:
+    - job
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: prometheus-rules
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/prometheus-rules-0.11.0/prometheus-rules-0.11.0.tgz
+    version: 0.11.0
+  - apiVersion: v2
     created: "2022-09-21T14:04:27.393001284Z"
     dependencies:
     - name: base
@@ -5304,6 +5486,21 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/prometheus-rules-0.9.2/prometheus-rules-0.9.2.tgz
     version: 0.9.2
   rbac:
+  - apiVersion: v2
+    created: "2023-08-25T13:37:12.965520672Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes rbac
+    digest: b41a9eb8d15074a0ab50322c29ae729d71f8786d4bcce015f1f4d90b6c943af4
+    keywords:
+    - rbac
+    name: rbac
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/rbac-0.11.0/rbac-0.11.0.tgz
+    version: 0.11.0
   - apiVersion: v2
     created: "2022-11-07T23:01:10.096561455Z"
     dependencies:
@@ -5484,6 +5681,24 @@ entries:
     - https://github.com/yapily/helm-charts/releases/download/rbac-0.1.0/rbac-0.1.0.tgz
     version: 0.1.0
   service:
+  - apiVersion: v2
+    created: "2023-08-25T13:37:13.157608919Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes service
+    digest: f4701ac9020501439b8da28e1ac90c9c80d5ec78a8fc3f50ba12bdb6d2163184
+    keywords:
+    - service
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: service
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/service-0.11.0/service-0.11.0.tgz
+    version: 0.11.0
   - apiVersion: v2
     created: "2022-11-02T12:53:16.655220253Z"
     dependencies:
@@ -5871,4 +6086,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2023-06-06T18:13:58.591450308Z"
+generated: "2023-08-25T13:37:13.159921043Z"
