@@ -15,4 +15,5 @@ maintainers:
 
 dependencies:
   - name: base
+    version: ~0
     repository: file://../base
