@@ -377,6 +377,16 @@ ingress:
 # tls:
 #   default: default-tls-secret-name
 
+ingressList: []
+# - name: test-2 (optional)
+#   class: nginx (optional)
+#   annotations:
+#     nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
+#   hosts:
+#     - host: test.example.com
+#       paths:
+#         - path: /api
+
 ## creating secrets:
 # secrets:
 #     encoded:
