@@ -56,7 +56,7 @@ subjects:
 {{- range $valueRange }}
 - kind: Group
   name: {{ . | trim | quote }}
-  apiGroup: rbac.authorization.k8s.io
+  apiGroup: rbac.authorization.k8s.ioRoleBinding
 {{- end }}
 {{- end }}
 {{- range .serviceAccountGroups }}
@@ -151,9 +151,9 @@ subjects:
 {{- $valueRange := pluck . $root.Values.serviceAccountGroups | first }}
 {{- range $valueRange }}
 - kind: ServiceAccount
-  name: {{ $coreRange.name | trim | quote }}
-  {{- if $coreRange.namespace }}
-  namespace: {{ $coreRange.namespace | quote }}
+  name: {{ .name | trim | quote }}
+  {{- if .namespace }}
+  namespace: {{ .namespace | quote }}
   {{- end }}
 {{- end }}
 {{- end }}
