@@ -43,7 +43,7 @@ metadata:
   {{- end }}
   name: {{ .name }}
 subjects:
-{{- with $coreRange.subjects }}
+{{- with .subjects }}
 {{- toYaml . }}
 {{- end }}
 {{- range .UserLists }}
