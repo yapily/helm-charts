@@ -44,7 +44,7 @@ metadata:
   name: {{ .name }}
 subjects:
 {{- with .subjects }}
-{{- toYaml . }}
+{{ toYaml . }}
 {{- end }}
 {{- range .UserLists }}
 {{- $valueRange := pluck . $root.Values.RbacUserLists | first }}
@@ -135,7 +135,7 @@ metadata:
   {{- end }}
 subjects:
 {{- with $coreRange.subjects }}
-{{- toYaml . }}
+{{ toYaml . }}
 {{- end }}
 {{- range $coreRange.UserLists }}
 {{- $valueRange := pluck . $root.Values.RbacUserLists | first }}
