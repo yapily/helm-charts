@@ -1880,6 +1880,25 @@ entries:
     version: 0.1.1
   argo-workflows:
   - apiVersion: v2
+    created: "2023-10-17T13:35:05.960980002Z"
+    dependencies:
+    - name: base
+      repository: file://../base
+      version: ~0
+    description: A Helm chart for Kubernetes argocd workflows
+    digest: f2d8c8365aa19c6c7da8077397c7db0f03721b550d7d10e63d9f2196ffab17fc
+    keywords:
+    - argocd
+    - workflows
+    maintainers:
+    - name: juri
+      url: https://github.com/juriku/helm-charts
+    name: argo-workflows
+    type: application
+    urls:
+    - https://github.com/yapily/helm-charts/releases/download/argo-workflows-0.11.6/argo-workflows-0.11.6.tgz
+    version: 0.11.6
+  - apiVersion: v2
     created: "2023-10-17T13:32:51.327366537Z"
     dependencies:
     - name: base
@@ -6965,4 +6984,4 @@ entries:
     urls:
     - https://github.com/yapily/helm-charts/releases/download/service-0.2.1/service-0.2.1.tgz
     version: 0.2.1
-generated: "2023-10-17T13:32:51.328151542Z"
+generated: "2023-10-17T13:35:05.961805613Z"
