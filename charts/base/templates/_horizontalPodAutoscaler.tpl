@@ -18,7 +18,9 @@ spec:
     kind: {{ .Values.kind | default "Deployment" }}
     {{- end }}
     name: {{ include "base.fullname" . }}
+  {{- if .Values.autoscaling.minReplicas }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
+  {{- end }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
   {{- range .Values.autoscaling.memory }}
