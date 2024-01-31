@@ -2,7 +2,7 @@
 {{- if .Values.autoscaling.enabled }}
 {{- $deploymentValues := . -}}
 ---
-apiVersion: {{ .Values.autoscaling.apiVersion | default "autoscaling/v2beta2" }}
+apiVersion: {{ .Values.autoscaling.apiVersion | default "autoscaling/v2" }}
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "base.fullname" . }}
