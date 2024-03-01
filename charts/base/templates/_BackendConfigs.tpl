@@ -7,7 +7,7 @@ apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
   name: {{ .name }}
-  {{- if namespace }}
+  {{- if .namespace }}
   namespace: {{ .namespace }}
   {{- end }}
   labels:
@@ -50,7 +50,7 @@ apiVersion: networking.gke.io/v1beta1
 kind: FrontendConfig
 metadata:
   name: {{ .name }}
-  {{- if namespace }}
+  {{- if .namespace }}
   namespace: {{ .namespace }}
   {{- end }}
   labels:
