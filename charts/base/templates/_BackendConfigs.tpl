@@ -7,6 +7,9 @@ apiVersion: cloud.google.com/v1
 kind: BackendConfig
 metadata:
   name: {{ .name }}
+  {{- if namespace }}
+  namespace: {{ .namespace }}
+  {{- end }}
   labels:
     {{- include "base.labels" $root | trim | nindent 4 }}
 spec:
@@ -47,6 +50,9 @@ apiVersion: networking.gke.io/v1beta1
 kind: FrontendConfig
 metadata:
   name: {{ .name }}
+  {{- if namespace }}
+  namespace: {{ .namespace }}
+  {{- end }}
   labels:
     {{- include "base.labels" $root | trim | nindent 4 }}
 spec:
