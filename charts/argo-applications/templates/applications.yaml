@@ -37,7 +37,7 @@ items:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       destination:
-      {{- toYaml $appValues.destination | nindent 4 }}
+      {{- toYaml $appValues.destination | nindent 8 }}
       {{- with $appValues.syncPolicy }}
       syncPolicy:
         {{- toYaml . | nindent 8 }}
