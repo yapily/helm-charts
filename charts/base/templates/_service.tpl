@@ -13,6 +13,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ $serviceName }}
+  {{- if $serviceValues.namespace }}
+  namespace: {{ $serviceValues.namespace }}
+  {{- end }}
   labels:
     {{- include "base.labels" $root | trim | nindent 4 }}
     {{- with $serviceValues.labels }}
