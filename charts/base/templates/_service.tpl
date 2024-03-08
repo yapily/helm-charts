@@ -59,7 +59,6 @@ spec:
       name: {{ $a.name | default (printf "http-%s" (toString $i))  }}
   {{- end }}
   {{- end }}
-  {{- with $serviceValues.selector }}
   selector:
     {{- if $serviceValues.selector }}
     {{- with $serviceValues.selector }}
