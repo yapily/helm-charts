@@ -59,8 +59,15 @@ spec:
       name: {{ $a.name | default (printf "http-%s" (toString $i))  }}
   {{- end }}
   {{- end }}
+  {{- with $serviceValues.selector }}
   selector:
+    {{- if $serviceValues.selector }}
+    {{- with $serviceValues.selector }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    {{- else }}
     {{- include "base.selectorLabels" $root | trim | nindent 4 }}
+    {{- end }}
   {{- end }}
 {{- end }}
 {{- end }}
