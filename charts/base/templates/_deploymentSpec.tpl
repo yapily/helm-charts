@@ -251,6 +251,19 @@ args:
 {{- end }}
 
 {{/*
+define pod command and args
+*/}}
+{{- define "base.hostAliases" -}}
+{{- if .hostNetwork }}
+hostNetwork: {{ .hostNetwork }}
+{{- end }}
+{{- with .hostAliases }}
+hostAliases:
+{{ toYaml . | indent 2 }}
+{{- end }}
+{{- end }}
+
+{{/*
 define pod service account
 */}}
 {{- define "base.serviceAccount" -}}
@@ -281,5 +294,6 @@ define default container properties
 {{- include "base.podSecurityContext" .Values }}
 {{- include "base.NodeScheduling" . }}
 {{- include "base.serviceAccount" .Values }}
+{{- include "base.hostAliases" .Values }}
 {{- include "base.priorityClassName" .Values }}
 {{- end }}

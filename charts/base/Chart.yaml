@@ -3,7 +3,7 @@ name: base
 description: A Helm chart for Kubernetes with helm named templates
 type: library
 
-version: 0.13.8
+version: 0.13.9
 
 keywords:
   - deployment
