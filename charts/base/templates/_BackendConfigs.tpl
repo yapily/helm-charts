@@ -40,6 +40,14 @@ spec:
     affinityCookieTtlSec: {{ .affinityCookieTtlSec }}
     {{- end }}
 {{- end }}
+{{- with .customRequestHeaders }}
+  customRequestHeaders:
+    {{ toYaml . | nindent 4 }}
+{{- end }}
+{{- with .customResponseHeaders }}
+  customResponseHeaders:
+    {{ toYaml . | nindent 4 }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- if .Values.frontendConfigs }}
