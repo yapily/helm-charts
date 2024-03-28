@@ -42,11 +42,11 @@ spec:
 {{- end }}
 {{- with .customRequestHeaders }}
   customRequestHeaders:
-    {{ toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
 {{- end }}
 {{- with .customResponseHeaders }}
   customResponseHeaders:
-    {{ toYaml . | nindent 4 }}
+    {{- toYaml . | nindent 4 }}
 {{- end }}
 {{- end }}
 {{- end }}
