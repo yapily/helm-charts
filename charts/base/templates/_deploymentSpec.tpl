@@ -218,11 +218,17 @@ imagePullSecrets:
 {{- end }}
 
 {{/*
-define container priorityClassName
+define pod priority and priorityClass
 */}}
-{{- define "base.priorityClassName" -}}
+{{- define "base.podPriority" -}}
 {{- if .priorityClassName }}
 priorityClassName: {{ .priorityClassName }}
+{{- end }}
+{{- if .priority }}
+priority: {{ .priority }}
+{{- end }}
+{{- if .preemptionPolicy }}
+preemptionPolicy: {{ .preemptionPolicy }}
 {{- end }}
 {{- end }}
 
@@ -254,6 +260,9 @@ args:
 define pod command and args
 */}}
 {{- define "base.hostAliases" -}}
+{{- if .dnsPolicy }}
+dnsPolicy: {{ .dnsPolicy }}
+{{- end }}
 {{- if .hostNetwork }}
 hostNetwork: {{ .hostNetwork }}
 {{- end }}
@@ -271,6 +280,28 @@ define pod service account
 automountServiceAccountToken: {{ .automountServiceAccountToken }}
 {{- end }}
 serviceAccountName: {{ .serviceAccountName | default "default" }}
+{{- end }}
+
+{{/*
+define topologySpreadConstraints
+*/}}
+{{- define "base.topologySpreadConstraints" -}}
+{{- if or (and (index .Values "topologySpreadConstraintsDefault") (index .Values.topologySpreadConstraintsDefault "enabled")) .Values.topologySpreadConstraints }}
+topologySpreadConstraints:
+{{- with .Values.topologySpreadConstraints }}
+{{ toYaml . | indent 2 }}
+{{- end }}
+{{- if .Values.topologySpreadConstraintsDefault.enabled }}
+- labelSelector:
+    matchLabels:
+      {{- range $key, $value := include "base.selectorLabels" . | trim | toString | fromYaml }}
+      {{ $key }}: {{ $value }}
+      {{- end }}
+  maxSkew: {{ .Values.topologySpreadConstraintsDefault.maxSkew }}
+  topologyKey: {{ .Values.topologySpreadConstraintsDefault.topologyKey }}
+  whenUnsatisfiable: {{ .Values.topologySpreadConstraintsDefault.whenUnsatisfiable }}
+{{- end }}
+{{- end }}
 {{- end }}
 
 {{/*
@@ -295,5 +326,13 @@ define default container properties
 {{- include "base.NodeScheduling" . }}
 {{- include "base.serviceAccount" .Values }}
 {{- include "base.hostAliases" .Values }}
-{{- include "base.priorityClassName" .Values }}
+{{- include "base.podPriority" .Values }}
+{{- include "base.topologySpreadConstraints" . }}
+enableServiceLinks: {{ hasKey .Values "enableServiceLinks" | ternary .Values.enableServiceLinks true }}
+{{- if .Values.restartPolicy }}
+restartPolicy: {{ .Values.restartPolicy }}
+{{- end }}
+{{- if .Values.terminationGracePeriodSeconds }}
+terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
+{{- end }}
 {{- end }}
