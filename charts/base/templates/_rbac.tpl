@@ -190,6 +190,7 @@ kind: ServiceAccount
 metadata:
   {{- with .labels }}
   labels:
+    {{- include "base.labels" $root | trim | nindent 4 }}
     {{- toYaml . | trim | nindent 4 }}
   {{- end }}
   {{- with .annotations }}
