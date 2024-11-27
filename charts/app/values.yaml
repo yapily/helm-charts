@@ -170,6 +170,7 @@ prometheusScrapePath: /actuator/prometheus
 ## enable HorizontalPodAutoscalers
 autoscaling:
   enabled: false
+  scaleTargetRef: {}
   minReplicas: 2
   maxReplicas: 10
   # pubsub_subscription:
