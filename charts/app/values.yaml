@@ -198,7 +198,6 @@ autoscaling:
   # behavior:
   #   scaleDown:
   #     stabilizationWindowSeconds: 300
-  scaleTargetRef: {}
 
 ## https://keda.sh/docs/latest/reference/scaledobject-spec/
 keda:
