@@ -188,11 +188,11 @@ roleRef:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  {{- with .labels }}
   labels:
     {{- include "base.labels" $root | trim | nindent 4 }}
+    {{- with .labels }}
     {{- toYaml . | trim | nindent 4 }}
-  {{- end }}
+    {{- end }}
   {{- with .annotations }}
   annotations:
     {{- toYaml . | trim | nindent 4 }}
@@ -203,5 +203,4 @@ metadata:
   {{- end }}
 {{- end }}
 {{- end }}
-
 {{- end }}
