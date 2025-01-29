@@ -41,7 +41,7 @@ spec:
       resource:
         name: cpu
         target:
-          {{- if hasKey . "AverageValue" }}
+          {{- if hasKey . "averageValue" }}
           type: {{ .type | default "AverageValue" | quote  }}
           averageValue: {{ .averageValue }}
           {{- else }}
