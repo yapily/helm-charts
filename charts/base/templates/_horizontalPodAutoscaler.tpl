@@ -28,7 +28,7 @@ spec:
       resource:
         name: memory
         target:
-          {{- if hasKey . "AverageValue" }}
+          {{- if hasKey . "averageValue" }}
           type: {{ .type | default "AverageValue" | quote  }}
           averageValue: {{ .averageValue }}
           {{- else }}
