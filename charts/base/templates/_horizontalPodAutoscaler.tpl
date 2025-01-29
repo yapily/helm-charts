@@ -28,16 +28,26 @@ spec:
       resource:
         name: memory
         target:
+          {{- if hasKey . "AverageValue" }}
+          type: {{ .type | default "AverageValue" | quote  }}
+          averageValue: {{ .averageValue }}
+          {{- else }}
           type: {{ .type | default "Utilization" | quote  }}
           averageUtilization: {{ .averageUtilization | default 50 }}
+          {{- end }}
   {{- end }}
   {{- range .Values.autoscaling.cpu }}
     - type: Resource
       resource:
         name: cpu
         target:
-          type: {{ .type | default "Utilization" | quote }}
+          {{- if hasKey . "AverageValue" }}
+          type: {{ .type | default "AverageValue" | quote  }}
+          averageValue: {{ .averageValue }}
+          {{- else }}
+          type: {{ .type | default "Utilization" | quote  }}
           averageUtilization: {{ .averageUtilization | default 50 }}
+          {{- end }}
   {{- end }}
   {{- range .Values.autoscaling.pubsub_subscription }}
     - type: External
