@@ -69,6 +69,8 @@ subjects:
   name: {{ .name | trim | quote }}
   {{- if .namespace }}
   namespace: {{ .namespace | quote }}
+  {{- else if $root.Values.namespace }}
+  namespace: {{ $root.Values.namespace }}
   {{- end }}
 {{- end }}
 {{- end }}
