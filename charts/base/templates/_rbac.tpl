@@ -101,6 +101,8 @@ metadata:
   name: {{ .name }}
   {{- if .namespace }}
   namespace: {{ .namespace | quote }}
+  {{- else if $root.Values.namespace }}
+  namespace: {{ $root.Values.namespace }}
   {{- end }}
 {{- if .rules -}}
 {{- with .rules }}
@@ -132,6 +134,8 @@ metadata:
   name: {{ $coreRange.name }}
   {{- if . }}
   namespace: {{ . | quote }}
+  {{- else if $root.Values.namespace }}
+  namespace: {{ $root.Values.namespace }}
   {{- end }}
 subjects:
 {{- with $coreRange.subjects }}
@@ -160,6 +164,8 @@ subjects:
   name: {{ .name | trim | quote }}
   {{- if .namespace }}
   namespace: {{ .namespace | quote }}
+  {{- else if $root.Values.namespace }}
+  namespace: {{ $root.Values.namespace }}
   {{- end }}
 {{- end }}
 {{- end }}
@@ -200,6 +206,8 @@ metadata:
   name: {{ .name }}
   {{- if .namespace }}
   namespace: {{ .namespace | quote }}
+  {{- else if $root.Values.namespace }}
+  namespace: {{ $root.Values.namespace }}
   {{- end }}
 {{- end }}
 {{- end }}

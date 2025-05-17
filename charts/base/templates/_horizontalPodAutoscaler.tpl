@@ -6,6 +6,11 @@ apiVersion: {{ .Values.autoscaling.apiVersion | default "autoscaling/v2" }}
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "base.fullname" . }}
+  {{- if .Values.autoscaling.namespace }}
+  namespace: {{ .Values.autoscaling.namespace }}
+  {{- else if .Values.namespace }}
+  namespace: {{ .Values.namespace }}
+  {{- end }}
   labels:
     {{- include "base.labels" . | trim | nindent 4 }}
 spec:
