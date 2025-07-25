@@ -96,5 +96,14 @@ spec:
       {{- with include "base.volumes" $root }}
       {{- . | trim | nindent 6 }}
       {{- end }}
+  {{- if $root.Values.volumeClaimTemplates }}
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: {{ $root.Values.persistentVolumeClaimRetentionPolicy.whenDeleted | default "Retain" }}
+    whenScaled: {{ $root.Values.persistentVolumeClaimRetentionPolicy.whenScaled | default "Retain" }}
+  {{- with $root.Values.volumeClaimTemplates }}
+  volumeClaimTemplates:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  {{- end }}
 {{- end }}
 {{- end }}

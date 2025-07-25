@@ -551,3 +551,9 @@ argo:
 statefulSet: false
 
 # serviceName: name-of-headless-service
+
+# volumeClaimTemplates: []
+
+persistentVolumeClaimRetentionPolicy:
+  whenDeleted: Retain
+  whenScaled: Retain
