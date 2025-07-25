@@ -25,9 +25,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app.kubernetes.io/instance: redis
-      app.kubernetes.io/name: redis
-      app.kubernetes.io/component: master
+      {{- include "base.selectorLabels" $root | trim | nindent 8 }}
   {{- if $root.Values.serviceName }}
   serviceName: {{ $root.Values.serviceName }}
   {{- end }}
@@ -42,7 +40,6 @@ spec:
         {{- with $root.Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
-        {{- include "base.selectorLabels" $root | trim | nindent 8 }}
       {{- if or $root.Values.prometheusScrape $root.Values.podAnnotations }}
       annotations:
         {{- if $root.Values.prometheusScrape }}
