@@ -2,6 +2,9 @@
 {{ include "base.secrets" . }}
 {{ include "base.service" . }}
 {{ include "base.ingress" . }}
+{{ include "base.gateway" . }}
+{{ include "base.httproute" . }}
+{{ include "base.grpcroute" . }}
 {{ include "base.verticalPodAutoscaler" . }}
 {{ include "base.podDisruptionBudget" . }}
 {{ include "base.horizontalPodAutoscaler" . }}
