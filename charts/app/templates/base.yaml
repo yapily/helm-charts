@@ -14,6 +14,7 @@
 {{ include "base.deployment" . }}
 {{ include "base.statefulSet" . }}
 {{ include "base.argoRollouts" . }}
+{{ include "base.argoRolloutsNative" . }}
 {{ include "base.analysisTemplate" . }}
 {{ include "base.pvc" . }}
 {{ include "base.raw" . }}

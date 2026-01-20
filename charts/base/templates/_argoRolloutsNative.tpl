@@ -1,14 +1,10 @@
-{{- define "base.deployment" -}}
-{{- if and (not .Values.statefulSet) (not (and .Values.argo.rollouts.enabled (eq .Values.argo.rollouts.type "Native"))) }}
+{{- define "base.argoRolloutsNative" -}}
+{{- if and .Values.argo.rollouts.enabled (eq .Values.argo.rollouts.type "Native") }}
+{{- if not .Values.statefulSet }}
 {{- $root := . -}}
 ---
-{{- if and $root.Values.argo.rollouts.enabled ( eq $root.Values.argo.rollouts.type "Deployment" ) }}
-apiVersion: {{ $root.Values.argo.rollouts.apiVersion }}
-kind: {{ $root.Values.argo.rollouts.kind }}
-{{- else }}
-apiVersion: {{ $root.Values.apiVersion | default "apps/v1" }}
-kind: {{ include "base.kind" . }}
-{{- end }}
+apiVersion: {{ $root.Values.argo.rollouts.apiVersion | default "argoproj.io/v1alpha1" }}
+kind: {{ $root.Values.argo.rollouts.kind | default "Rollout" }}
 metadata:
   name: {{ include "base.fullname" $root }}
   {{- if $root.Values.namespace }}
@@ -24,22 +20,17 @@ metadata:
     {{- include "base.valuesPairs" $root.Values.annotations | trim | nindent 4 }}
   {{- end }}
 spec:
-  {{- if and $root.Values.argo.rollouts.enabled ( eq $root.Values.argo.rollouts.type "workloadRef" ) }}
-  replicas: 0
-  {{- else if and (not $root.Values.autoscaling.enabled) (not $root.Values.keda.enabled) }}
+  {{- if $root.Values.keda.enabled }}
+  replicas: {{ $root.Values.keda.minReplicaCount | default 0 }}
+  {{- else if $root.Values.autoscaling.enabled }}
+  replicas: {{ $root.Values.autoscaling.minReplicas }}
+  {{- else }}
   replicas: {{ $root.Values.replicas }}
   {{- end }}
   revisionHistoryLimit: {{ $root.Values.revisionHistoryLimit | default 10 }}
-  {{- if $root.Values.argo.rollouts.enabled }}
   {{- with $root.Values.argo.rollouts.strategy }}
   strategy:
     {{- toYaml . | nindent 4 }}
-  {{- end }}
-  {{- else }}
-  {{- with $root.Values.strategy }}
-  strategy:
-    {{- toYaml . | nindent 4 }}
-  {{- end }}
   {{- end }}
   {{- if $root.Values.minReadySeconds }}
   minReadySeconds: {{ $root.Values.minReadySeconds }}
@@ -110,5 +101,6 @@ spec:
       {{- with include "base.volumes" $root }}
       {{- . | trim | nindent 6 }}
       {{- end }}
+{{- end }}
 {{- end }}
 {{- end }}

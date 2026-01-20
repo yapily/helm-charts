@@ -468,6 +468,7 @@ argo:
     enabled: false
     ## ref: https://argoproj.github.io/argo-rollouts/migrating/#convert-deployment-to-rollout
     ## changing apiVersion and kind to Convert Deployment to Rollout
+    ## use "Native" to render a Rollout without a workloadRef/deployment dependency
     type: Deployment
     ## https://argoproj.github.io/argo-rollouts/migrating/#reference-deployment-from-rollout
     ## Reference Deployment From Rollout (true)
