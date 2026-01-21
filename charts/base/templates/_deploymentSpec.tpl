@@ -188,6 +188,18 @@ resources:
 {{- end }}
 
 {{/*
+define pod scheduler 
+*/}}
+{{- define "base.containerScheduler" -}}
+{{- if .schedulerName }}
+schedulerName: {{ .schedulerName }}
+{{- end }}
+{{- if .runtimeClassName }}
+runtimeClassName: {{ .runtimeClassName }}
+{{- end }}
+{{- end }}
+
+{{/*
 define container securityContext
 */}}
 {{- define "base.containerSecurityContext" -}}
@@ -321,6 +333,7 @@ define default pod properties
 define default container properties
 */}}
 {{- define "base.podDefaultProperties" -}}
+{{- include "base.containerScheduler" . }}
 {{- include "base.imagePullSecrets" .Values }}
 {{- include "base.podSecurityContext" .Values }}
 {{- include "base.NodeScheduling" . }}
