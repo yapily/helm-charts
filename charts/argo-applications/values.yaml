@@ -1,4 +1,6 @@
-applicationsDefaults: {}
+applicationsDefaults:
+  project: default
+  enabled: true
 
 # -- Deploy Argo CD Applications within this helm release
 # @default -- `[]` (See [values.yaml])
