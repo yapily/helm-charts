@@ -16,6 +16,9 @@ keywords:
   - podDisruptionBudget
   - service
   - ingress
+  - gateway
+  - httproute
+  - grpcroute
   - analysisTemplate
   - rbac
 
