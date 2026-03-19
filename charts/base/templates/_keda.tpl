@@ -31,8 +31,12 @@ spec:
     {{- if .Values.keda.scaleTargetRef.envSourceContainerName }}
     envSourceContainerName: {{ .Values.keda.scaleTargetRef.envSourceContainerName }}
     {{- end }}
-  pollingInterval: {{ .Values.keda.pollingInterval | default 30 }}
-  cooldownPeriod: {{ .Values.keda.cooldownPeriod | default 300 }}
+  {{- if .Values.keda.pollingInterval }}
+  pollingInterval: {{ .Values.keda.pollingInterval }}
+  {{- end }}
+  {{- if .Values.keda.cooldownPeriod }}
+  cooldownPeriod: {{ .Values.keda.cooldownPeriod }}
+  {{- end }}
   {{- if .Values.keda.idleReplicaCount }}
   idleReplicaCount: {{ .Values.keda.idleReplicaCount }}
   {{- end }}
