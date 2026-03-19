@@ -34,6 +34,10 @@ spec:
   {{- if $serviceValues.loadBalancerIP }}
   loadBalancerIP: {{ $serviceValues.loadBalancerIP | quote }}
   {{- end }}
+  {{- if $serviceValues.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+  {{- $serviceValues.loadBalancerSourceRanges | toYaml | nindent 4 }}
+  {{- end }}
   {{- if $serviceValues.clusterIP }}
   clusterIP: {{ $serviceValues.clusterIP | quote }}
   {{- end }}

@@ -90,6 +90,7 @@ service:
   # labels:
   #   key: value
   # loadBalancerIP: ""
+  # loadBalancerSourceRanges: []
   ##
   # clusterIP: ""
   # externalTrafficPolicy: Cluster
